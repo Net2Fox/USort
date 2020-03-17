@@ -4,7 +4,7 @@ USort - an automatic sorter of your files! The first beta release.
 At the moment, USort is able to sort pre-installed file extensions into specific folders.
 However, you can move file extensions to other categories in the settings thanks to drag'n'drop.
 If you want to add your file extension for sorting, you can enter it in the json settings file. In the next update it will be implemented more conveniently!
-
+### [The road to release!](https://github.com/Net2Fox/USort/projects/1)
 
 
 ## Russian
