@@ -1,0 +1,29 @@
+﻿<Window x:Class="USort.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:USort"
+        mc:Ignorable="d"
+        Title="USort" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Button Content="Указать путь" HorizontalAlignment="Left" Margin="169,191,0,0" VerticalAlignment="Top" Width="184" Click="Button_Click" Height="29" FontSize="16"/>
+        <TextBox x:Name="DirectoryPath" HorizontalAlignment="Center" Height="34" TextAlignment="Center" Margin="12,153,10,0" TextWrapping="Wrap" Text="Здесь будет отображаться выбранный вами путь" VerticalAlignment="Top" Width="772" FontSize="16" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="GreetingLab" Text="Вас приветствует USort - программа для автоматической сортировкий ваших файлов." TextAlignment="Center"  HorizontalAlignment="Center" Margin="12,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="138" Width="772" FontSize="16"/>
+        <Button x:Name="Settings_Button" Content="Настройки" HorizontalAlignment="Center" Margin="280,226,292,149" VerticalAlignment="Center" Width="222" Click="Settings_Button_Click" Height="46" FontSize="16"/>
+        <Button Content="Тестирование" HorizontalAlignment="Center" Margin="530,372,-129,11" VerticalAlignment="Center" Width="393" Click="Button_Click_1" Height="38" RenderTransformOrigin="0.5,0.5" FontSize="16">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="0.72"/>
+                    <SkewTransform AngleX="34.859" AngleY="-29.231"/>
+                    <RotateTransform Angle="-9.283"/>
+                    <TranslateTransform X="25.532" Y="-6.319"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Sort_Button" Content="Отсортировать" HorizontalAlignment="Left" Margin="430,191,0,0" VerticalAlignment="Top" Width="184" Click="Sort_Button_Click" Height="29" FontSize="16"/>
+        <Label x:Name="Version_Label" Content="" HorizontalAlignment="Left" Margin="7,390,0,0" VerticalAlignment="Top" Width="160" FontSize="12"/>
+        <Button x:Name="About_Button" Content="О программе" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="109" Click="About_Button_Click"/>
+        <ProgressBar x:Name="Progress1" HorizontalAlignment="Left" Height="20" Margin="47,298,0,0" VerticalAlignment="Top" Width="697"/>
+    </Grid>
+</Window>
