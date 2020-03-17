@@ -58,6 +58,10 @@ namespace USort
                 fc.DocFormats = ClassFormats.DocFormats;
                 fc.ImageFormats = ClassFormats.ImageFormats;
                 fc.PresentFormats = ClassFormats.PresentFormats;
+                fc.ArchiveFormats = ClassFormats.ArchiveFormats;
+                fc.ModelFormat = ClassFormats.ModelFormat;
+                fc.ProgramFormats = ClassFormats.ProgramFormats;
+                fc.MusicFormats = ClassFormats.MusicFormats;
 
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))

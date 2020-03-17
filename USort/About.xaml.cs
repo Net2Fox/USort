@@ -27,7 +27,7 @@ namespace USort
 
         private void GitHub_Button_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/");
+            System.Diagnostics.Process.Start("https://github.com/Net2Fox/USort");
         }
     }
 }

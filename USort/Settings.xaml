@@ -6,11 +6,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="Настройки" Height="578.731" Width="800">
+        Title="Settings" Height="578.731" Width="800">
     <Grid>
-        <Button x:Name="Create_Button" Content="Добавить" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="148" Click="Create_Button_Click" Height="39" FontSize="16"/>
-        <Button x:Name="Delete_Button" Content="Удалить" HorizontalAlignment="Left" Margin="323,499,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16"/>
-        <Button x:Name="Save_Button" Content="Сохранить" HorizontalAlignment="Left" Margin="634,499,0,0" VerticalAlignment="Top" Width="148" Click="Save_Button_Click" Height="39" FontSize="16"/>
+        <Button x:Name="Create_Button" Content="Add" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="148" Click="Create_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
+        <Button x:Name="Delete_Button" Content="Delete" HorizontalAlignment="Left" Margin="323,499,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
+        <Button x:Name="Save_Button" Content="Save" HorizontalAlignment="Left" Margin="634,499,0,0" VerticalAlignment="Top" Width="148" Click="Save_Button_Click" Height="39" FontSize="16"/>
         <Grid x:Name="DocsFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="10,10,0,0" VerticalAlignment="Top" Width="219">
             <Label x:Name="Formats1_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="DocFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>

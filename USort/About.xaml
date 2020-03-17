@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="О программе" Height="156.432" Width="323.582" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Width">
+        Title="About" Height="194.432" Width="323.582" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Width">
     <Grid>
-        <Label x:Name="Author_Label" Content="Разработчик: Net2Fox" HorizontalAlignment="Center" Margin="74,6,74,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label x:Name="Versin2_Label" Content="Версия: " HorizontalAlignment="Center" Margin="52,42,52,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button x:Name="GitHub_Button" Content="Перейти в репозиторий GitHub" HorizontalAlignment="Center" Margin="49,83,49,0" VerticalAlignment="Top" Width="220" Click="GitHub_Button_Click"/>
+        <Label x:Name="Author_Label" Content="Developer: Net2Fox" HorizontalAlignment="Center" Margin="74,6,74,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="Versin2_Label" Content="Version: " HorizontalAlignment="Center" Margin="124,82,124,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="GitHub_Button" Content="Go to the GitHub repository" HorizontalAlignment="Center" Margin="49,124,49,0" VerticalAlignment="Top" Width="220" Click="GitHub_Button_Click"/>
+        <Label x:Name="Thanks_Label" Content="Thank NegaTiv for the idea." HorizontalAlignment="Center" Margin="57,43,56,0" VerticalAlignment="Top" FontSize="16" Width="205"/>
 
     </Grid>
 </Window>

@@ -15,26 +15,26 @@ namespace USort
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string path = null; //Путь к папке, указанный пользователем
-        private string fullDirectoryFile = null; //Полный путь к файлу
-        private sbyte direct = 0; //Переменная для проверки, была ли указана дериктория
+        private string path = null;
+        private string fullDirectoryFile = null;
+        private sbyte direct = 0; //Variable to check if a directory has been specified
 
         public MainWindow()
         {
             InitializeComponent();
-            GreetingLab.Text += "\nДля начала укажите путь к папке, файлы в которой вы хотите отсортировать."; //Приветствие
+            GreetingLab.Text += "\nFirst, specify the path to the folder in which files you want to sort.";
             Version_Label.Content = App.version;
             try
             {
-                //Крч тут происходит создание нового экземпляра класса для записи статического класса в json(по сути костыль)
+                //Here, a new instance of the class is created to write a static class in json (essentially a crutch)
                 CrutchClass fc = new CrutchClass();
                 //-----------------------------------------------------------------------------------------------------------
 
-                if (File.Exists($@"{Environment.CurrentDirectory}\Settings.json")) //Если файл есть
+                if (File.Exists($@"{Environment.CurrentDirectory}\Settings.json")) 
                 {
-                    string json = File.ReadAllText($@"{Environment.CurrentDirectory}\Settings.json"); //Чтение всего, что есть в файле
-                    fc = JsonConvert.DeserializeObject<CrutchClass>(json); //Парсинг json
-                    //Присваивание значений не статическому классу
+                    string json = File.ReadAllText($@"{Environment.CurrentDirectory}\Settings.json");
+                    fc = JsonConvert.DeserializeObject<CrutchClass>(json);
+                    //Assigning values to a non-static class
                     ClassFormats.DocFormats = fc.DocFormats; 
                     ClassFormats.PresentFormats = fc.PresentFormats;
                     ClassFormats.ImageFormats = fc.ImageFormats;
@@ -44,7 +44,7 @@ namespace USort
                     ClassFormats.MusicFormats = fc.MusicFormats;
                     //-----------------------------------------
                 }
-                else //Если файла нет
+                else
                 {
 
                     fc.DocFormats = ClassFormats.DocFormats;
@@ -58,48 +58,48 @@ namespace USort
                     using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
                     using (JsonWriter writer = new JsonTextWriter(sw))
                     {
-                        serializer.Serialize(writer, fc); //Создание файла и запись в него
+                        serializer.Serialize(writer, fc);
                     }
                 }
             }
             catch(Exception ex)
             {
-                Clipboard.SetText(ex.ToString()); //Ошибка. Лог копируется в буфер обмена
+                Clipboard.SetText(ex.ToString());
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) //Кнопка выбора пути
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                FolderBrowserDialog openFolder = new FolderBrowserDialog(); //Новый экземпляр диалогового окна
-                if (openFolder.ShowDialog() == System.Windows.Forms.DialogResult.OK) //Проверка результата открытия диалогового окна
+                FolderBrowserDialog openFolder = new FolderBrowserDialog();
+                if (openFolder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    path = DirectoryPath.Text = openFolder.SelectedPath; //Присваивание пути
+                    path = DirectoryPath.Text = openFolder.SelectedPath;
                     direct = 1;
                 }
-                else //Если не указать папку
+                else
                 {
-                    GreetingLab.Text = "Похоже, вы не указали папку. \nЕсли эта ошибка повторится, попробуйте ввести путь вручную.";
+                    GreetingLab.Text = "It looks like you did not specify a folder. \nIf this error persists, try entering the path manually.";
                 }
             }
             catch (Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
-                GreetingLab.Text = "Кажется, возникла критическая ошибка. Лог был скопирован в буфер обемна.";
+                GreetingLab.Text = "There seems to be a critical error. The log was copied to the clipboard.";
             }
         }
 
-        private void Settings_Button_Click(object sender, RoutedEventArgs e) //Кнопка настроек
+        private void Settings_Button_Click(object sender, RoutedEventArgs e)
         {
             Settings settings_window = new Settings();
-            settings_window.Owner = this; //Установка родительства
+            settings_window.Owner = this;
             settings_window.ShowDialog();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e) //Кнопка тестирования
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //Это всё нужно для проверки, какие значения находятся в статическом классе
+            //This is all you need to check which values are in the static class
             GreetingLab.Text = "";
             foreach (var v in ClassFormats.DocFormats)
             {
@@ -137,103 +137,103 @@ namespace USort
             }
         }
 
-        private void Sort_Button_Click(object sender, RoutedEventArgs e) //Кнопка сортировки
+        private void Sort_Button_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 if (direct == 1)
                 {
-                    DirectoryInfo files = new DirectoryInfo(path); //Новый экземпляр DirectoryInfo с заданным путём
+                    DirectoryInfo files = new DirectoryInfo(path);
                     Progress1.Maximum = files.GetFiles().Length;
                     Progress1.Value = 0;
-                    foreach (FileInfo file in files.GetFiles()) //Цикл прокрутки через все файлы в папке
+                    foreach (FileInfo file in files.GetFiles())
                     {
-                        foreach (string form in ClassFormats.DocFormats)//Сортировка документов
+                        foreach (string form in ClassFormats.DocFormats)
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Documents\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Documents\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Documents\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Documents\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.PresentFormats)//Сортировка презентаций
+                        foreach (string form in ClassFormats.PresentFormats)//Presentation sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Presentations\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Presentations\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Presentations\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Presentations\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.ImageFormats)//Сортировка картинок
+                        foreach (string form in ClassFormats.ImageFormats)//Image sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Images\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Images\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Images\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Images\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.ArchiveFormats)//Сортировка архивов
+                        foreach (string form in ClassFormats.ArchiveFormats)//Archive sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Archives\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Archives\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Archives\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Archives\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.ModelFormat)//Сортировка 3Д моделей
+                        foreach (string form in ClassFormats.ModelFormat)//3D Models sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Models\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Models\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Models\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Models\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.ProgramFormats)//Сортировка программ/установщиков
+                        foreach (string form in ClassFormats.ProgramFormats)//Programs/installers sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Programs\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Programs\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Programs\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Programs\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
-                        foreach (string form in ClassFormats.MusicFormats)//Сортировка музыки
+                        foreach (string form in ClassFormats.MusicFormats)//Music sort
                         {
                             if (file.Extension == form)
                             {
-                                Directory.CreateDirectory($@"{path}\Music\"); //Создание папки, если её нет
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}"; //Установка полного пути до файла
-                                File.Move(fullDirectoryFile, $@"{path}\Music\{file.Name}"); //Перемещение файла
+                                Directory.CreateDirectory($@"{path}\Music\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\Music\{file.Name}");
                                 Progress1.Value++;
                             }
                         }
                     }
-                    GreetingLab.Text = "Успешно!";
+                    GreetingLab.Text = "Successfully!";
                 }
                 else
                 {
-                    GreetingLab.Text = "Похоже, вы не указали папку.";
+                    GreetingLab.Text = "It looks like you did not specify a folder.";
                 }
             }
             catch (Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
-                GreetingLab.Text = "Кажется, возникла критическая ошибка. Лог был скопирован в буфер обемна.";
+                GreetingLab.Text = "There seems to be a critical error. The log was copied to the clipboard.";
             }
         }
 
-        private void About_Button_Click(object sender, RoutedEventArgs e) //Кнопка о программе
+        private void About_Button_Click(object sender, RoutedEventArgs e)
         {
             About about_window = new About();
             about_window.ShowDialog();
