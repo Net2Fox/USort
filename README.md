@@ -19,6 +19,6 @@ USort - автоматический сортировщик ваших файл�
 ## Credits
 Special thanks to:
 - [Json.NET](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET
-- [GongSolutions.WPF.DragDrop](https://github.com/punker76/gong-wpf-dragdrop) - An easy to use drag'n'drop framework for WPF.
+- [GongSolutions.WPF.DragDrop](https://github.com/punker76/gong-wpf-dragdrop) - An easy to use drag'n'drop framework for WPF
 - [NegaTiv]() - For the idea
-- [Epsil0neR](https://github.com/Epsil0neR/WPF-Localization) - WPF localization guide on the fly.
+- [Epsil0neR](https://github.com/Epsil0neR/WPF-Localization) - For WPF localization guide without restarting
