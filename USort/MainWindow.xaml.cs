@@ -7,6 +7,10 @@ using Clipboard = System.Windows.Clipboard;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Globalization;
+using MessageBox = System.Windows.MessageBox;
+using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace USort
 {
@@ -22,13 +26,17 @@ namespace USort
         public MainWindow()
         {
             InitializeComponent();
-            GreetingLab.Text += "\nFirst, specify the path to the folder in which files you want to sort.";
             Version_Label.Content = App.version;
             try
             {
                 //Here, a new instance of the class is created to write a static class in json (essentially a crutch)
                 CrutchClass fc = new CrutchClass();
                 //-----------------------------------------------------------------------------------------------------------
+                var SysLang = CultureInfo.CurrentCulture;
+                if(SysLang.ToString() == "ru-RU" || SysLang.ToString() == "en-US") //Проверка языка системы
+                {
+                    App.Language = CultureInfo.CurrentCulture;
+                }
 
                 if (File.Exists($@"{Environment.CurrentDirectory}\Settings.json")) 
                 {
@@ -42,11 +50,12 @@ namespace USort
                     ClassFormats.ModelFormat = fc.ModelFormat;
                     ClassFormats.ProgramFormats = fc.ProgramFormats;
                     ClassFormats.MusicFormats = fc.MusicFormats;
+                    ClassFormats.VideoFormats = fc.VideoFormats;
+                    DirectoryPath.Text = Properties.Settings.Default.Path;
                     //-----------------------------------------
                 }
                 else
                 {
-
                     fc.DocFormats = ClassFormats.DocFormats;
                     fc.ImageFormats = ClassFormats.ImageFormats;
                     fc.PresentFormats = ClassFormats.PresentFormats;
@@ -54,10 +63,12 @@ namespace USort
                     fc.ModelFormat = ClassFormats.ModelFormat;
                     fc.ProgramFormats = ClassFormats.ProgramFormats;
                     fc.MusicFormats = ClassFormats.MusicFormats;
+                    fc.VideoFormats = ClassFormats.VideoFormats;
                     JsonSerializer serializer = new JsonSerializer();
                     using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
                     using (JsonWriter writer = new JsonTextWriter(sw))
                     {
+                        serializer.Formatting = Formatting.Indented;
                         serializer.Serialize(writer, fc);
                     }
                 }
@@ -76,17 +87,28 @@ namespace USort
                 if (openFolder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     path = DirectoryPath.Text = openFolder.SelectedPath;
+                    USort.Properties.Settings.Default.Path = path;
+                    USort.Properties.Settings.Default.Save();
                     direct = 1;
                 }
                 else
                 {
-                    GreetingLab.Text = "It looks like you did not specify a folder. \nIf this error persists, try entering the path manually.";
+                    GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
+
+                    //if (App.Language.ToString() == "ru-RU")
+                    //{
+                    //    GreetingLab.Text = "Кажется, вы не выбрали папку.";
+                    //}
+                    //else if(App.Language.ToString() == "en-US")
+                    //{
+                    //    GreetingLab.Text = "It looks like you did not specify a folder.";
+                    //}
                 }
             }
             catch (Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
-                GreetingLab.Text = "There seems to be a critical error. The log was copied to the clipboard.";
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Error");
             }
         }
 
@@ -95,46 +117,6 @@ namespace USort
             Settings settings_window = new Settings();
             settings_window.Owner = this;
             settings_window.ShowDialog();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //This is all you need to check which values are in the static class
-            GreetingLab.Text = "";
-            foreach (var v in ClassFormats.DocFormats)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.ImageFormats)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.PresentFormats)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.ArchiveFormats)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.ModelFormat)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.ProgramFormats)
-            {
-                GreetingLab.Text += v;
-            }
-            GreetingLab.Text += "\n";
-            foreach (var v in ClassFormats.MusicFormats)
-            {
-                GreetingLab.Text += v;
-            }
         }
 
         private void Sort_Button_Click(object sender, RoutedEventArgs e)
@@ -148,88 +130,105 @@ namespace USort
                     Progress1.Value = 0;
                     foreach (FileInfo file in files.GetFiles())
                     {
-                        foreach (string form in ClassFormats.DocFormats)
+                        try
                         {
-                            if (file.Extension == form)
+                            foreach (string form in ClassFormats.DocFormats)
                             {
-                                Directory.CreateDirectory($@"{path}\Documents\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Documents\{file.Name}");
-                                Progress1.Value++;
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Documents\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Documents\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.PresentFormats)//Presentation sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Presentations\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Presentations\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.ImageFormats)//Image sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Images\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Images\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.ArchiveFormats)//Archive sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Archives\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Archives\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.ModelFormat)//3D Models sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Models\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Models\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.ProgramFormats)//Programs/installers sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Programs\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Programs\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.MusicFormats)//Music sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Music\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Music\{file.Name}");
+                                    Progress1.Value++;
+                                }
+                            }
+                            foreach (string form in ClassFormats.VideoFormats)//Video sort
+                            {
+                                if (file.Extension == form)
+                                {
+                                    Directory.CreateDirectory($@"{path}\Video\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\Video\{file.Name}");
+                                    Progress1.Value++;
+                                }
                             }
                         }
-                        foreach (string form in ClassFormats.PresentFormats)//Presentation sort
+                        catch(Exception ex)
                         {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Presentations\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Presentations\{file.Name}");
-                                Progress1.Value++;
-                            }
-                        }
-                        foreach (string form in ClassFormats.ImageFormats)//Image sort
-                        {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Images\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Images\{file.Name}");
-                                Progress1.Value++;
-                            }
-                        }
-                        foreach (string form in ClassFormats.ArchiveFormats)//Archive sort
-                        {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Archives\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Archives\{file.Name}");
-                                Progress1.Value++;
-                            }
-                        }
-                        foreach (string form in ClassFormats.ModelFormat)//3D Models sort
-                        {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Models\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Models\{file.Name}");
-                                Progress1.Value++;
-                            }
-                        }
-                        foreach (string form in ClassFormats.ProgramFormats)//Programs/installers sort
-                        {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Programs\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Programs\{file.Name}");
-                                Progress1.Value++;
-                            }
-                        }
-                        foreach (string form in ClassFormats.MusicFormats)//Music sort
-                        {
-                            if (file.Extension == form)
-                            {
-                                Directory.CreateDirectory($@"{path}\Music\");
-                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                File.Move(fullDirectoryFile, $@"{path}\Music\{file.Name}");
-                                Progress1.Value++;
-                            }
+                            
                         }
                     }
-                    GreetingLab.Text = "Successfully!";
+                    GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Succ");
                 }
                 else
                 {
-                    GreetingLab.Text = "It looks like you did not specify a folder.";
+                    GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
                 }
             }
             catch (Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
-                GreetingLab.Text = "There seems to be a critical error. The log was copied to the clipboard.";
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Error");
             }
         }
 

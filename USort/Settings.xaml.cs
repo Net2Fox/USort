@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows;
+//using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Windows.Controls;
+using Clipboard = System.Windows.Clipboard;
 
 namespace USort
 {
@@ -19,6 +23,19 @@ namespace USort
             InitializeComponent();
             try
             {
+                App.LanguageChanged += LanguageChanged;
+                CultureInfo currLang = App.Language;
+                menuLanguage.Items.Clear();
+                foreach (var lang in App.Languages)
+                {
+                    MenuItem menuLang = new MenuItem();
+                    menuLang.Header = lang.DisplayName;
+                    menuLang.Tag = lang;
+                    menuLang.IsChecked = lang.Equals(currLang);
+                    menuLang.Click += ChangeLanguageClick;
+                    menuLanguage.Items.Add(menuLang);
+                }
+
                 DocFormats_List.ItemsSource = ClassFormats.DocFormats;
                 ImageFormats_List.ItemsSource = ClassFormats.ImageFormats;
                 PresentFormats_List.ItemsSource = ClassFormats.PresentFormats;
@@ -26,17 +43,33 @@ namespace USort
                 MusicFormats_List.ItemsSource = ClassFormats.MusicFormats;
                 ModelFormats_List.ItemsSource = ClassFormats.ModelFormat;
                 ProgramFormats_List.ItemsSource = ClassFormats.ProgramFormats;
-                Formats1_Label.Content = "Documents";
-                Formats2_Label.Content = "Images";
-                Formats3_Label.Content = "Presentations";
-                Formats4_Label.Content = "Archives"; 
-                Formats5_Label.Content = "Music";
-                Formats6_Label.Content = "Programs";
-                Formats7_Label.Content = "Models";
             }
             catch (Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
+            }
+        }
+
+        private void LanguageChanged(Object sender, EventArgs e)
+        {
+            CultureInfo currLang = App.Language;
+            foreach (MenuItem i in menuLanguage.Items)
+            {
+                CultureInfo ci = i.Tag as CultureInfo;
+                i.IsChecked = ci != null && ci.Equals(currLang);
+            }
+        }
+
+        private void ChangeLanguageClick(Object sender, EventArgs e)
+        {
+            MenuItem mi = sender as MenuItem;
+            if (mi != null)
+            {
+                CultureInfo lang = mi.Tag as CultureInfo;
+                if (lang != null)
+                {
+                    App.Language = lang;
+                }
             }
         }
 
@@ -62,7 +95,7 @@ namespace USort
                 fc.ModelFormat = ClassFormats.ModelFormat;
                 fc.ProgramFormats = ClassFormats.ProgramFormats;
                 fc.MusicFormats = ClassFormats.MusicFormats;
-
+                fc.VideoFormats = ClassFormats.VideoFormats;
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))

@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:USort"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib">
+    <v:String x:Key="l_Greetings">Приветствуем тебя в USort - автоматический сортировщик ваших файлов. Для начала выбери папку, файлы в которой ты хочешь отсортировать.</v:String>
+    <v:String x:Key="l_Sort">Сортировка</v:String>
+    <v:String x:Key="l_Box">Выбранный вами путь будет отображаться здесь</v:String>
+    <v:String x:Key="l_LangMenu">Сменить язык</v:String>
+    <v:String x:Key="l_Select">Выбрать папку</v:String>
+    <v:String x:Key="l_About">О программе</v:String>
+    <v:String x:Key="l_Settings">Настройки</v:String>
+
+    <v:String x:Key="l_Error">Произошла критическая ошибка! Лог был скопирован в буфер обмена.</v:String>
+    <v:String x:Key="l_Succ">Успешно!</v:String>
+    <v:String x:Key="l_PathError">Кажется, вы не выбрали папку.</v:String>
+
+    <v:String x:Key="l_Save">Сохранить</v:String>
+    <v:String x:Key="l_Delete">Удалить</v:String>
+    <v:String x:Key="l_Add">Добавить</v:String>
+    <v:String x:Key="l_GitRepo">Перейти в GitHub репозиторий</v:String>
+    <v:String x:Key="l_Developer">Разработчик: Net2Fox</v:String>
+    <v:String x:Key="l_Thanks">Спасибо NegaTiv за идею.</v:String>
+    <v:String x:Key="l_Version">Версия:</v:String>
+    <v:String x:Key="l_Fomats1">Документы</v:String>
+    <v:String x:Key="l_Fomats2">Картинки</v:String>
+    <v:String x:Key="l_Fomats3">Презентации</v:String>
+    <v:String x:Key="l_Fomats4">Архивы</v:String>
+    <v:String x:Key="l_Fomats5">Музыка</v:String>
+    <v:String x:Key="l_Fomats6">Программы</v:String>
+    <v:String x:Key="l_Fomats7">Модели</v:String>
+    <v:String x:Key="l_Fomats8">Видео</v:String>
+</ResourceDictionary>

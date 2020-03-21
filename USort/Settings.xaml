@@ -8,37 +8,44 @@
         mc:Ignorable="d"
         Title="Settings" Height="578.731" Width="800">
     <Grid>
-        <Button x:Name="Create_Button" Content="Add" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="148" Click="Create_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
-        <Button x:Name="Delete_Button" Content="Delete" HorizontalAlignment="Left" Margin="323,499,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
-        <Button x:Name="Save_Button" Content="Save" HorizontalAlignment="Left" Margin="634,499,0,0" VerticalAlignment="Top" Width="148" Click="Save_Button_Click" Height="39" FontSize="16"/>
+        <Button x:Name="Create_Button" Content="{DynamicResource l_Add}" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="148" Click="Create_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
+        <Button x:Name="Delete_Button" Content="{DynamicResource l_Delete}" HorizontalAlignment="Left" Margin="323,499,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
+        <Button x:Name="Save_Button" Content="{DynamicResource l_Save}" HorizontalAlignment="Left" Margin="634,499,0,0" VerticalAlignment="Top" Width="148" Click="Save_Button_Click" Height="39" FontSize="16"/>
         <Grid x:Name="DocsFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="10,10,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats1_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats1_Label" Content="{DynamicResource l_Fomats1}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="DocFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="ImageFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="288,10,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats2_Label" Content="Label" HorizontalAlignment="Left" Margin="90,15,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats2_Label" Content="{DynamicResource l_Fomats2}" HorizontalAlignment="Left" Margin="90,15,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="ImageFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="PresentFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="563,10,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats3_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats3_Label" Content="{DynamicResource l_Fomats3}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="PresentFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="ArchiveFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="10,167,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats4_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats4_Label" Content="{DynamicResource l_Fomats4}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="ArchiveFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="MusicFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="288,167,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats5_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats5_Label" Content="{DynamicResource l_Fomats5}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="MusicFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="ProgramFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="563,167,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats6_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats6_Label" Content="{DynamicResource l_Fomats6}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="ProgramFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
         <Grid x:Name="ModelFormats_Grid" HorizontalAlignment="Left" Height="152" Margin="10,324,0,0" VerticalAlignment="Top" Width="219">
-            <Label x:Name="Formats7_Label" Content="Label" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Formats7_Label" Content="{DynamicResource l_Fomats7}" HorizontalAlignment="Left" Margin="90,10,0,0" VerticalAlignment="Top"/>
             <ListBox x:Name="ModelFormats_List" HorizontalAlignment="Left" Height="101" Margin="10,41,0,0" VerticalAlignment="Top" Width="199" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.DropHandler="{Binding}"/>
         </Grid>
+
+        <Menu Background="{x:Null}" Margin="579,324,24,186">
+            <MenuItem x:Name="menuLanguage" Header="{DynamicResource l_LangMenu}" Width="179" Height="28" FontSize="16"/>
+        </Menu>
+
+
+
 
     </Grid>
 </Window>
