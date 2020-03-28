@@ -12,8 +12,9 @@ namespace USort
     /// </summary>
     ///
     public partial class App : Application
-    {
-        internal static string version = " Beta 0.2";
+    { 
+        internal static double ver_for_up = 0.3; //Переменная для проверки обновлений
+        internal static string version = " Beta 0.3";
 
         private static List<CultureInfo> m_Languages = new List<CultureInfo>();
 
@@ -109,5 +110,11 @@ namespace USort
         public ObservableCollection<string> MusicFormats = new ObservableCollection<string> { };
         public ObservableCollection<string> ProgramFormats = new ObservableCollection<string> { };
         public ObservableCollection<string> VideoFormats = new ObservableCollection<string> { };
+        public CultureInfo Language;
+    }
+
+    public class Updates //Класс для парсинга обновлений
+    {
+        public double LastetVersion;
     }
 }

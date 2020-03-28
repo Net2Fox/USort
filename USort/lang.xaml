@@ -9,11 +9,9 @@
     <v:String x:Key="l_Select">Select folder</v:String>
     <v:String x:Key="l_About">About</v:String>
     <v:String x:Key="l_Settings">Settings</v:String>
-
     <v:String x:Key="l_Error">There seems to be a critical error. The log was copied to the clipboard.</v:String>
     <v:String x:Key="l_Succ">Successfully!</v:String>
     <v:String x:Key="l_PathError">It looks like you did not specify a folder.</v:String>
-
     <v:String x:Key="l_Save">Save</v:String>
     <v:String x:Key="l_Delete">Delete</v:String>
     <v:String x:Key="l_Add">Add</v:String>
@@ -21,6 +19,10 @@
     <v:String x:Key="l_Developer">Developer: Net2Fox</v:String>
     <v:String x:Key="l_Thanks">Thank NegaTiv for the idea.</v:String>
     <v:String x:Key="l_Version">Version:</v:String>
+
+    <v:String x:Key="l_NameDown">Update</v:String>
+    <v:String x:Key="l_Download">Download</v:String>
+
     <v:String x:Key="l_Fomats1">Documents</v:String>
     <v:String x:Key="l_Fomats2">Images</v:String>
     <v:String x:Key="l_Fomats3">Presentations</v:String>

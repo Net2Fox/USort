@@ -11,6 +11,8 @@ using System.Globalization;
 using MessageBox = System.Windows.MessageBox;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using System.Net;
+using WebBrowser = System.Windows.Forms.WebBrowser;
 
 namespace USort
 {
@@ -27,16 +29,15 @@ namespace USort
         {
             InitializeComponent();
             Version_Label.Content = App.version;
+                                                                //Автообновление 
             try
             {
+                //-----------------------------------------------------------------------------------------------------------
+
                 //Here, a new instance of the class is created to write a static class in json (essentially a crutch)
                 CrutchClass fc = new CrutchClass();
                 //-----------------------------------------------------------------------------------------------------------
-                var SysLang = CultureInfo.CurrentCulture;
-                if(SysLang.ToString() == "ru-RU" || SysLang.ToString() == "en-US") //Проверка языка системы
-                {
-                    App.Language = CultureInfo.CurrentCulture;
-                }
+
 
                 if (File.Exists($@"{Environment.CurrentDirectory}\Settings.json")) 
                 {
@@ -52,6 +53,18 @@ namespace USort
                     ClassFormats.MusicFormats = fc.MusicFormats;
                     ClassFormats.VideoFormats = fc.VideoFormats;
                     DirectoryPath.Text = Properties.Settings.Default.Path;
+                    if (fc.Language != null)
+                    {
+                        App.Language = fc.Language;
+                    }
+                    else
+                    {
+                        var SysLang = CultureInfo.CurrentCulture;
+                        if (SysLang.ToString() == "ru-RU" || SysLang.ToString() == "en-US") //Проверка языка системы
+                        {
+                            App.Language = CultureInfo.CurrentCulture;
+                        }
+                    }
                     //-----------------------------------------
                 }
                 else
@@ -71,6 +84,38 @@ namespace USort
                         serializer.Formatting = Formatting.Indented;
                         serializer.Serialize(writer, fc);
                     }
+                }
+
+                try
+                {
+                    using (WebClient wc = new WebClient())
+                    {
+                        Updates updClass = new Updates();
+                        updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update.json"));
+                        if (updClass.LastetVersion != App.ver_for_up && updClass.LastetVersion > App.ver_for_up)
+                        {
+                            MessageBoxResult result = MessageBoxResult.None;
+                            if (App.Language.ToString() == "ru-RU")
+                            {
+                                result = MessageBox.Show($"Вышла новая версия! Желаете её скачать?", "Обновление", MessageBoxButton.YesNo);
+                            }
+                            else if(App.Language.ToString() == "en-US")
+                            {
+                                result = MessageBox.Show($"New version released! Would you like to download it?", "Update", MessageBoxButton.YesNo);
+                            }
+
+                            if (result == MessageBoxResult.Yes)
+                            {
+                                Updater updWin = new Updater();
+                                updWin.Show();
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Clipboard.SetText(e.ToString());
                 }
             }
             catch(Exception ex)

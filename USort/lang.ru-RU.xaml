@@ -9,11 +9,9 @@
     <v:String x:Key="l_Select">Выбрать папку</v:String>
     <v:String x:Key="l_About">О программе</v:String>
     <v:String x:Key="l_Settings">Настройки</v:String>
-
     <v:String x:Key="l_Error">Произошла критическая ошибка! Лог был скопирован в буфер обмена.</v:String>
     <v:String x:Key="l_Succ">Успешно!</v:String>
     <v:String x:Key="l_PathError">Кажется, вы не выбрали папку.</v:String>
-
     <v:String x:Key="l_Save">Сохранить</v:String>
     <v:String x:Key="l_Delete">Удалить</v:String>
     <v:String x:Key="l_Add">Добавить</v:String>
@@ -21,6 +19,10 @@
     <v:String x:Key="l_Developer">Разработчик: Net2Fox</v:String>
     <v:String x:Key="l_Thanks">Спасибо NegaTiv за идею.</v:String>
     <v:String x:Key="l_Version">Версия:</v:String>
+
+    <v:String x:Key="l_NameDown">Обновление</v:String>
+    <v:String x:Key="l_Download">Скачивание</v:String>
+
     <v:String x:Key="l_Fomats1">Документы</v:String>
     <v:String x:Key="l_Fomats2">Картинки</v:String>
     <v:String x:Key="l_Fomats3">Презентации</v:String>

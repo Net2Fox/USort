@@ -96,10 +96,12 @@ namespace USort
                 fc.ProgramFormats = ClassFormats.ProgramFormats;
                 fc.MusicFormats = ClassFormats.MusicFormats;
                 fc.VideoFormats = ClassFormats.VideoFormats;
+                fc.Language = App.Language;
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
+                    serializer.Formatting = Formatting.Indented;
                     serializer.Serialize(writer, fc);
                 }
             }

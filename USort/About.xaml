@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="About" Height="194.432" Width="323.582" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Width">
+        Title="{DynamicResource l_About}" Height="194.432" Width="323.582" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Width">
     <Grid>
         <Label x:Name="Author_Label" Content="{DynamicResource l_Developer}" HorizontalAlignment="Center" Margin="74,6,74,0" VerticalAlignment="Top" FontSize="16"/>
         <Label x:Name="Versin2_Label" Content="{DynamicResource l_Version}" HorizontalAlignment="Center" Margin="124,82,124,0" VerticalAlignment="Top" FontSize="16"/>

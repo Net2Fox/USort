@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="Settings" Height="578.731" Width="800">
+        Title="{DynamicResource l_Settings}" Height="578.731" Width="800" WindowStartupLocation="Manual" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="Create_Button" Content="{DynamicResource l_Add}" HorizontalAlignment="Left" Margin="10,499,0,0" VerticalAlignment="Top" Width="148" Click="Create_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
         <Button x:Name="Delete_Button" Content="{DynamicResource l_Delete}" HorizontalAlignment="Left" Margin="323,499,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16" IsEnabled="False"/>
