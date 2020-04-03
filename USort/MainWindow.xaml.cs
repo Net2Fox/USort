@@ -17,37 +17,37 @@ namespace USort
             InitializeComponent();
 
             //Auto Update
-            //try
-            //{
-            //    using (WebClient wc = new WebClient())
-            //    {
-            //        Updates updClass = new Updates();
-            //        updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update.json"));
-            //        if (updClass.LastetVersion != Properties.Settings.Default.Version && updClass.LastetVersion > Properties.Settings.Default.Version)
-            //        {
-            //            MessageBoxResult result = MessageBoxResult.None;
-            //            if (App.Language.ToString() == "ru-RU")
-            //            {
-            //                result = MessageBox.Show($"Вышла новая версия! Желаете её скачать?", "Обновление", MessageBoxButton.YesNo);
-            //            }
-            //            else if (App.Language.ToString() == "en-US")
-            //            {
-            //                result = MessageBox.Show($"New version released! Would you like to download it?", "Update", MessageBoxButton.YesNo);
-            //            }
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    Updates updClass = new Updates();
+                    updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update.json"));
+                    if (updClass.LastetVersion != Properties.Settings.Default.Version && updClass.LastetVersion > Properties.Settings.Default.Version)
+                    {
+                        MessageBoxResult result = MessageBoxResult.None;
+                        if (App.Language.ToString() == "ru-RU")
+                        {
+                            result = MessageBox.Show($"Вышла новая версия! Желаете её скачать?", "Обновление", MessageBoxButton.YesNo);
+                        }
+                        else if (App.Language.ToString() == "en-US")
+                        {
+                            result = MessageBox.Show($"New version released! Would you like to download it?", "Update", MessageBoxButton.YesNo);
+                        }
 
-            //            if (result == MessageBoxResult.Yes)
-            //            {
-            //                Updater updWin = new Updater();
-            //                updWin.Show();
-            //                this.Close();
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    Clipboard.SetText(e.ToString());
-            //}
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            Updater updWin = new Updater();
+                            updWin.Show();
+                            this.Close();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Clipboard.SetText(e.ToString());
+            }
             //-----------------------------------------------------------------------------------------------------------
 
             mp = new MainPage();
