@@ -2,6 +2,7 @@
 USort - an automatic sorter of your files!
 ## What can this sorter do?
 USort can sort pre-installed file extensions by specific folders, and you can also create your own categories or edit previously created ones!
+###  Note on creating and editing categories: the file extension must be specified starting with *. and without spaces between them!
 ### [The road to release!](https://github.com/Net2Fox/USort/projects/1)
 
 
@@ -9,6 +10,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 USort - автоматический сортировщик ваших файлов!
 ### Что умеет данный сортировщик?
 USort умеет сортировать заранее предустановленные расширения файлов по определённым папкам, а также вы можете создавать свои категории или редактировать ранее созданные!
+### Пометка по созданию и редактированию категорий: расширение файлов обязательно надо указывать начиная с *. и без пробелов между ними!
 
 
 
