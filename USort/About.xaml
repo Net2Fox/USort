@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="{DynamicResource l_About}" Height="194.432" Width="323.582" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="Width">
+        Title="{DynamicResource l_About}" Height="241" Width="428.444" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
-        <Label x:Name="Author_Label" Content="{DynamicResource l_Developer}" HorizontalAlignment="Center" Margin="74,6,74,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label x:Name="Versin2_Label" Content="{DynamicResource l_Version}" HorizontalAlignment="Center" Margin="124,82,124,0" VerticalAlignment="Top" FontSize="16"/>
-        <Button x:Name="GitHub_Button" Content="{DynamicResource l_GitRepo}" HorizontalAlignment="Center" Margin="34,124,33,0" VerticalAlignment="Top" Width="251" Click="GitHub_Button_Click" FontSize="16"/>
-        <Label x:Name="Thanks_Label" Content="{DynamicResource l_Thanks}" HorizontalAlignment="Center" Margin="57,43,56,0" VerticalAlignment="Top" FontSize="16" Width="205"/>
-
+        <TextBlock HorizontalAlignment="Left" Margin="10,12,0,0" TextWrapping="Wrap" Text="{DynamicResource l_Developer}" VerticalAlignment="Top" Width="402" Height="42" FontSize="16" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,56,0,0" TextWrapping="Wrap" Text="{DynamicResource l_Thanks}" VerticalAlignment="Top" Width="402" Height="22" FontSize="16" TextAlignment="Center"/>
+        <Button x:Name="ToGitRepo_Button" Content="{DynamicResource l_GitRepo}" HorizontalAlignment="Left" Margin="91,157,0,0" VerticalAlignment="Top" Width="242" Height="36" FontSize="16" Click="ToGitRepo_Button_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" Text="{DynamicResource l_Thanks1}" VerticalAlignment="Top" Width="402" Height="23" FontSize="16" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="{DynamicResource l_Thanks2}" VerticalAlignment="Top" Width="402" Height="23" FontSize="16" TextAlignment="Center"/>
     </Grid>
 </Window>

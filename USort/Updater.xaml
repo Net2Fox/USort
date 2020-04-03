@@ -8,7 +8,7 @@
         Title="{DynamicResource l_NameDown}" Height="194.35" Width="442.977" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <ProgressBar x:Name="ProgressBar" HorizontalAlignment="Center" Height="29" Margin="63,89,62,0" VerticalAlignment="Top" Width="312"/>
-        <TextBlock x:Name="TextDownload" HorizontalAlignment="Center" Margin="133,10,136,0" TextWrapping="Wrap" Text="{DynamicResource l_Download}" VerticalAlignment="Top" FontSize="16" Width="168" Height="26" TextAlignment="Center"/>
+        <TextBlock x:Name="TextDownload" HorizontalAlignment="Center" Margin="113,10,115,0" TextWrapping="Wrap" Text="{DynamicResource l_Connecting}" VerticalAlignment="Top" FontSize="16" Width="209" Height="26" TextAlignment="Center"/>
         <TextBlock x:Name="TextProgress" HorizontalAlignment="Center" Margin="133,41,136,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="16" Width="168" Height="26" TextAlignment="Center"/>
     </Grid>
 </Window>

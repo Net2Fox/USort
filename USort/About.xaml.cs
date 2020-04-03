@@ -22,10 +22,9 @@ namespace USort
         public About()
         {
             InitializeComponent();
-            Versin2_Label.Content += App.version;
         }
 
-        private void GitHub_Button_Click(object sender, RoutedEventArgs e)
+        private void ToGitRepo_Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/Net2Fox/USort");
         }

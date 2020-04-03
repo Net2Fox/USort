@@ -12,23 +12,27 @@
     <v:String x:Key="l_Error">Произошла критическая ошибка! Лог был скопирован в буфер обмена.</v:String>
     <v:String x:Key="l_Succ">Успешно!</v:String>
     <v:String x:Key="l_PathError">Кажется, вы не выбрали папку.</v:String>
-    <v:String x:Key="l_Save">Сохранить</v:String>
+    <v:String x:Key="l_Edit">Редактировать</v:String>
     <v:String x:Key="l_Delete">Удалить</v:String>
     <v:String x:Key="l_Add">Добавить</v:String>
     <v:String x:Key="l_GitRepo">Перейти в GitHub репозиторий</v:String>
     <v:String x:Key="l_Developer">Разработчик: Net2Fox</v:String>
-    <v:String x:Key="l_Thanks">Спасибо NegaTiv за идею.</v:String>
+    <v:String x:Key="l_Thanks">Благодарности</v:String>
+    <v:String x:Key="l_Thanks1">NegaTiv - идея и помощь в тестировании.</v:String>
+    <v:String x:Key="l_Thanks2">ZerZru - помощь в тестировании.</v:String>
     <v:String x:Key="l_Version">Версия:</v:String>
-
+    <v:String x:Key="l_AdvButton">Расширенные настройки</v:String>
+    <v:String x:Key="l_AdvButton2">Назад</v:String>
+    <v:String x:Key="l_Connecting">Устанавливаю соединение...</v:String>
     <v:String x:Key="l_NameDown">Обновление</v:String>
     <v:String x:Key="l_Download">Скачивание</v:String>
 
-    <v:String x:Key="l_Fomats1">Документы</v:String>
-    <v:String x:Key="l_Fomats2">Картинки</v:String>
-    <v:String x:Key="l_Fomats3">Презентации</v:String>
-    <v:String x:Key="l_Fomats4">Архивы</v:String>
-    <v:String x:Key="l_Fomats5">Музыка</v:String>
-    <v:String x:Key="l_Fomats6">Программы</v:String>
-    <v:String x:Key="l_Fomats7">Модели</v:String>
-    <v:String x:Key="l_Fomats8">Видео</v:String>
+    <v:String x:Key="l_TextCateName">Название категории</v:String>
+    <v:String x:Key="l_AddTitle">Добавление категории</v:String>
+    <v:String x:Key="l_EditTitle">Редактирование категории</v:String>
+    <v:String x:Key="l_TextFormats">Расширения файлов</v:String>
+    <v:String x:Key="l_Save">Сохранить</v:String>
+    <v:String x:Key="l_BoxName">Напишите название для новой категории</v:String>
+    <v:String x:Key="l_BoxFormats">Здесь пишите расширения файлов начиная с "*."</v:String>
+    <v:String x:Key="l_Help">Пишите расширения файлов начиная с "*."</v:String>
 </ResourceDictionary>

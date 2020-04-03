@@ -12,24 +12,27 @@
     <v:String x:Key="l_Error">There seems to be a critical error. The log was copied to the clipboard.</v:String>
     <v:String x:Key="l_Succ">Successfully!</v:String>
     <v:String x:Key="l_PathError">It looks like you did not specify a folder.</v:String>
-    <v:String x:Key="l_Save">Save</v:String>
+    <v:String x:Key="l_Edit">Edit</v:String>
     <v:String x:Key="l_Delete">Delete</v:String>
     <v:String x:Key="l_Add">Add</v:String>
     <v:String x:Key="l_GitRepo">Go to the GitHub repository</v:String>
     <v:String x:Key="l_Developer">Developer: Net2Fox</v:String>
-    <v:String x:Key="l_Thanks">Thank NegaTiv for the idea.</v:String>
+    <v:String x:Key="l_Thanks">Thanks</v:String>
+    <v:String x:Key="l_Thanks1">NegaTiv - idea and help in testing.</v:String>
+    <v:String x:Key="l_Thanks2">ZerZru - help in testing.</v:String>
     <v:String x:Key="l_Version">Version:</v:String>
-
+    <v:String x:Key="l_AdvButton">Advance Settings</v:String>
+    <v:String x:Key="l_AdvButton2">Back</v:String>
+    <v:String x:Key="l_Connecting">Establishing a connection...</v:String>
     <v:String x:Key="l_NameDown">Update</v:String>
     <v:String x:Key="l_Download">Download</v:String>
-
-    <v:String x:Key="l_Fomats1">Documents</v:String>
-    <v:String x:Key="l_Fomats2">Images</v:String>
-    <v:String x:Key="l_Fomats3">Presentations</v:String>
-    <v:String x:Key="l_Fomats4">Archives</v:String>
-    <v:String x:Key="l_Fomats5">Music</v:String>
-    <v:String x:Key="l_Fomats6">Programs</v:String>
-    <v:String x:Key="l_Fomats7">Models</v:String>
-    <v:String x:Key="l_Fomats8">Video</v:String>
     
+    <v:String x:Key="l_TextCateName">Name of category</v:String>
+    <v:String x:Key="l_AddTitle">Adding a category</v:String>
+    <v:String x:Key="l_EditTitle">Category editing</v:String>
+    <v:String x:Key="l_TextFormats">File extensions</v:String>
+    <v:String x:Key="l_Save">Save</v:String>
+    <v:String x:Key="l_BoxName">Write a name for the new category</v:String>
+    <v:String x:Key="l_BoxFormats">Write file extensions here starting with "*."</v:String>
+    <v:String x:Key="l_Help">Write file extensions starting with "*."</v:String>
 </ResourceDictionary>

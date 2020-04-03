@@ -29,6 +29,7 @@ namespace USort
             {
                 Uri down_Uri = new Uri("http://net2fox.kl.com.ua/Latest.exe");
                 wc.DownloadFileAsync(down_Uri, $"{Environment.CurrentDirectory}/Latest.exe");
+                TextDownload.SetResourceReference(TextBlock.TextProperty, "l_Download"); 
                 wc.DownloadProgressChanged += (s, e) => { ProgressBar.Maximum = e.TotalBytesToReceive;
                     ProgressBar.Value = e.BytesReceived;
                     TextProgress.Text = e.ProgressPercentage.ToString(); 
