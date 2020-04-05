@@ -35,4 +35,12 @@
     <v:String x:Key="l_BoxName">Write a name for the new category</v:String>
     <v:String x:Key="l_BoxFormats">Write file extensions here starting with "*."</v:String>
     <v:String x:Key="l_Help">Write file extensions starting with "*."</v:String>
+
+    <v:String x:Key="l_HeadName">Name</v:String>
+    <v:String x:Key="l_HeadRule">Rule</v:String>
+    <v:String x:Key="l_HeadFileExce">File name</v:String>
+    <v:String x:Key="l_TextFileExce">Excluded files</v:String>
+    <v:String x:Key="l_TextDark">Dark theme</v:String>
+    <v:String x:Key="l_AutoUpd">Autoupdate</v:String>
+    <v:String x:Key="l_Upd">Check for updates</v:String>
 </ResourceDictionary>

@@ -6,8 +6,10 @@ using static USort.App;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Clipboard;
 
 namespace USort
@@ -19,19 +21,22 @@ namespace USort
     {
         internal string path = null;
         private string fullDirectoryFile = null;
+        internal JSONParser JSP = new JSONParser(); 
 
         public MainPage()
         {
             InitializeComponent();
-            Version_Label.Content = App.version;
+            Version_Label.Content = version;
             
             try
             {
                 //JSON Parsing or creating
-                if (File.Exists($@"{Environment.CurrentDirectory}\Settings.json"))
+                if (File.Exists($@"{Application.StartupPath}\Settings.json"))
                 {
-                    string json = File.ReadAllText($@"{Environment.CurrentDirectory}\Settings.json");
-                    CategoryList = JsonConvert.DeserializeObject<List<CategoryClass>>(json);
+                    string json = File.ReadAllText($@"{Application.StartupPath}\Settings.json");
+                    JSP = JsonConvert.DeserializeObject<JSONParser>(json);
+                    CategoryList = JSP.Categories;
+                    FileException = JSP.FileExceptions;
                     DirectoryPath.Text = path = Properties.Settings.Default.Path;
                 }
                 else
@@ -74,36 +79,40 @@ namespace USort
                             new CategoryClass("Music", new ObservableCollection<string>() { ".mp3", ".m4a", ".wav", ".ogg", ".mpa", ".midi", ".mid", ".m3u", ".m3u8", ".flac" })
                         };
                     }
-                    using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
+                    JSP.Categories = CategoryList;
+                    JSP.FileExceptions = FileException;
+                    using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
                     using (JsonWriter writer = new JsonTextWriter(sw))
                     {
                         serializer.Formatting = Formatting.Indented;
-                        serializer.Serialize(writer, CategoryList);
+                        serializer.Serialize(writer, JSP);
                     }
                 }
                 //-----------------------------------------------------------------------------------------------------------
             }
             catch
             {
-                string json = File.ReadAllText($@"{Environment.CurrentDirectory}\Settings.json");
-                ClassFormats cs = JsonConvert.DeserializeObject<ClassFormats>(json);
-                CategoryList = new List<CategoryClass>
-                {
-                    new CategoryClass("Документы", cs.DocFormats),
-                    new CategoryClass("Презентации", cs.PresentFormats),
-                    new CategoryClass("Картинки", cs.ImageFormats),
-                    new CategoryClass("Архивы", cs.ArchiveFormats),
-                    new CategoryClass("Модели", cs.ModelFormat),
-                    new CategoryClass("Музыка", cs.MusicFormats),
-                    new CategoryClass("Программы", cs.ProgramFormats),
-                    new CategoryClass("Видео", cs.VideoFormats)
-                };
+                string json = File.ReadAllText($@"{Application.StartupPath}\Settings.json");
+                CategoryList = JsonConvert.DeserializeObject<List<CategoryClass>>(json);
+                JSP.Categories = CategoryList;
+                JSP.FileExceptions = FileException;
+                //CategoryList = new List<CategoryClass>
+                //{
+                //    new CategoryClass("Документы", cs.DocFormats),
+                //    new CategoryClass("Презентации", cs.PresentFormats),
+                //    new CategoryClass("Картинки", cs.ImageFormats),
+                //    new CategoryClass("Архивы", cs.ArchiveFormats),
+                //    new CategoryClass("Модели", cs.ModelFormat),
+                //    new CategoryClass("Музыка", cs.MusicFormats),
+                //    new CategoryClass("Программы", cs.ProgramFormats),
+                //    new CategoryClass("Видео", cs.VideoFormats)
+                //};
                 JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json")) 
-                using (JsonWriter writer = new JsonTextWriter(sw)) 
+                using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
+                using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, CategoryList);
+                    serializer.Serialize(writer, JSP);
                 }
             }
         }
@@ -114,13 +123,13 @@ namespace USort
             {
                 FolderBrowserDialog openFolder = new FolderBrowserDialog();
                 var result = openFolder.ShowDialog();
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (result == DialogResult.OK)
                 {
                     path = DirectoryPath.Text = openFolder.SelectedPath;
                     Properties.Settings.Default.Path = path;
                     Properties.Settings.Default.Save();
                 }
-                else if(result == System.Windows.Forms.DialogResult.Cancel && DirectoryPath.Text != Properties.Settings.Default.Path)
+                else if(result == DialogResult.Cancel && DirectoryPath.Text != Properties.Settings.Default.Path)
                 {
                     GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
                 }
@@ -149,12 +158,15 @@ namespace USort
                             {
                                 foreach (string form in Category.Formats)
                                 {
-                                    if (file.Extension == form)
+                                    foreach (string exc in FileException)
                                     {
-                                        Directory.CreateDirectory($@"{path}\{Category.Name}\");
-                                        fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                        File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
-                                        Progress1.Value++;
+                                        if (file.Extension == form && file.Name != exc)
+                                        {
+                                            Directory.CreateDirectory($@"{path}\{Category.Name}\");
+                                            fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                            File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
+                                            Progress1.Value++;
+                                        }
                                     }
                                 }
                             }

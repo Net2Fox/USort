@@ -59,14 +59,5 @@ namespace USort.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на .
-        /// </summary>
-        internal static string Resource {
-            get {
-                return ResourceManager.GetString("Resource", resourceCulture);
-            }
-        }
     }
 }

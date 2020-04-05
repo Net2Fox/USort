@@ -15,10 +15,25 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = " Beta 0.4"; //Отображение версии
+        internal static string version = " Beta 0.5"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
+        internal static List<string> FileException; //Исключения файлов из сортировки
         internal static bool creating;
+
+
+        //Параметры запуска
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+
+            foreach (string arg in e.Args)
+            {
+                USort.Properties.Settings.Default.Path = arg;
+                USort.Properties.Settings.Default.Save();
+            }
+        }
+        //------------------------------------------------------------------
+
 
                                         //Localization
         private static List<CultureInfo> m_Languages = new List<CultureInfo>();
@@ -30,6 +45,7 @@ namespace USort
                 return m_Languages;
             }
         }
+
         public App()
         {
             InitializeComponent(); 
@@ -94,18 +110,18 @@ namespace USort
         //----------------------------------------------------------------------------------------
     }
 
-    public class ClassFormats //Нужен для парсинга старых настроек
-    {
-        public ObservableCollection<string> DocFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> ImageFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> ArchiveFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> ModelFormat = new ObservableCollection<string> {  };
-        public ObservableCollection<string> MusicFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> VideoFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> ProgramFormats = new ObservableCollection<string> {  };
-        public ObservableCollection<string> PresentFormats = new ObservableCollection<string> {  };
-        public CultureInfo Language;
-    }
+    //public class ClassFormats //Нужен для парсинга старых настроек
+    //{
+    //    public ObservableCollection<string> DocFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> ImageFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> ArchiveFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> ModelFormat = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> MusicFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> VideoFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> ProgramFormats = new ObservableCollection<string> {  };
+    //    public ObservableCollection<string> PresentFormats = new ObservableCollection<string> {  };
+    //    public CultureInfo Language;
+    //}
 
     public class CategoryClass //Шаблон категории
     {
@@ -136,6 +152,12 @@ namespace USort
             Name = N;
             Formats = F;
         }
+    }
+
+    public class JSONParser //Класс для создания и чтения JSON
+    {
+        public List<CategoryClass> Categories;
+        public List<string> FileExceptions;
     }
 
     public class Updates //Класс для парсинга обновлений

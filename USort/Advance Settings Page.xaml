@@ -23,8 +23,8 @@
         <ListView x:Name="ListTest" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="794">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="Имя" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Formats}" Header="Правило" Width="635"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="{DynamicResource l_HeadName}" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Formats}" Header="{DynamicResource l_HeadRule}" Width="635"/>
                 </GridView>
             </ListView.View>
         </ListView>

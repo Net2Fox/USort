@@ -49,13 +49,25 @@ namespace USort.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.4")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
         public double Version {
             get {
                 return ((double)(this["Version"]));
             }
             set {
                 this["Version"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AutoUpd {
+            get {
+                return ((bool)(this["AutoUpd"]));
+            }
+            set {
+                this["AutoUpd"] = value;
             }
         }
     }
