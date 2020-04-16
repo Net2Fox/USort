@@ -10,7 +10,6 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 - Portability. The program does not require installation, you just unzip the folder and that's it.
 - Openness. All source code of the program is available on GitHub.
 - The "Quick start" function, i.e. you can drag the folder where you want to sort files directly to the executable file of the program and it will immediately start with the path to this folder.
-- Auto-update to the latest version.
 
 ## Russian
 USort - автоматический сортировщик ваших файлов!
@@ -24,7 +23,6 @@ USort умеет сортировать заранее предустановл�
 - Портативность. Программа не требует установки, вы просто разархивируете папку и всё.
 - Открытость. Весь исходный код программы доступен на GitHub.
 - Функция "Быстрый запуск", т.е. вы можете перетащить папку, файлы в которой вы хотите отсортировать прямо на исполняемый файл программы и она сразу запустится с путем до этой папки.
-- Автообновление до последней версии.
 
 
 
