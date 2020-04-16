@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using static USort.App;
+using Application = System.Windows.Forms.Application;
 
 namespace USort
 {
@@ -90,11 +91,13 @@ namespace USort
                 }
                 ListTest.ItemsSource = Cate2;
                 JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
+                Pages.mp.JSP.Categories = CategoryList;
+                Pages.mp.JSP.FileExceptions = FileException;
+                using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, CategoryList);
+                    serializer.Serialize(writer, Pages.mp.JSP);
                 }
             }
             catch

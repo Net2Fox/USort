@@ -16,7 +16,6 @@
         <Button x:Name="Sort_Button" Content="{DynamicResource l_Sort}" HorizontalAlignment="Left" Margin="430,191,0,0" VerticalAlignment="Top" Width="184" Click="Sort_Button_Click" Height="29" FontSize="16"/>
         <Label x:Name="Version_Label" Content="" HorizontalAlignment="Left" Margin="7,390,0,0" VerticalAlignment="Top" Width="160" FontSize="12"/>
         <Button x:Name="About_Button" Content="{DynamicResource l_About}" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="109" Click="About_Button_Click"/>
-        <ProgressBar x:Name="Progress1" HorizontalAlignment="Left" Height="20" Margin="47,298,0,0" VerticalAlignment="Top" Width="697"/>
 
     </Grid>
 </Page>

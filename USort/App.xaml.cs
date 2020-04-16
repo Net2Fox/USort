@@ -15,7 +15,7 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = " Beta 0.5"; //Отображение версии
+        internal static string version = " Beta 0.6"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
         internal static List<string> FileException; //Исключения файлов из сортировки
@@ -110,19 +110,6 @@ namespace USort
         //----------------------------------------------------------------------------------------
     }
 
-    //public class ClassFormats //Нужен для парсинга старых настроек
-    //{
-    //    public ObservableCollection<string> DocFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> ImageFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> ArchiveFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> ModelFormat = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> MusicFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> VideoFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> ProgramFormats = new ObservableCollection<string> {  };
-    //    public ObservableCollection<string> PresentFormats = new ObservableCollection<string> {  };
-    //    public CultureInfo Language;
-    //}
-
     public class CategoryClass //Шаблон категории
     {
         public string Name { get; set; }
@@ -162,6 +149,8 @@ namespace USort
 
     public class Updates //Класс для парсинга обновлений
     {
-        public double LastetVersion;
+        public double LatestVersion;
+        public string URL;
+        public string Changelogs;
     }
 }

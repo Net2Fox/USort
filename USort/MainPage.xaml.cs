@@ -80,6 +80,7 @@ namespace USort
                         };
                     }
                     JSP.Categories = CategoryList;
+                    FileException = new List<string> { };
                     JSP.FileExceptions = FileException;
                     using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
                     using (JsonWriter writer = new JsonTextWriter(sw))
@@ -90,29 +91,16 @@ namespace USort
                 }
                 //-----------------------------------------------------------------------------------------------------------
             }
-            catch
+            catch(Exception ex)
             {
-                string json = File.ReadAllText($@"{Application.StartupPath}\Settings.json");
-                CategoryList = JsonConvert.DeserializeObject<List<CategoryClass>>(json);
-                JSP.Categories = CategoryList;
-                JSP.FileExceptions = FileException;
-                //CategoryList = new List<CategoryClass>
-                //{
-                //    new CategoryClass("Документы", cs.DocFormats),
-                //    new CategoryClass("Презентации", cs.PresentFormats),
-                //    new CategoryClass("Картинки", cs.ImageFormats),
-                //    new CategoryClass("Архивы", cs.ArchiveFormats),
-                //    new CategoryClass("Модели", cs.ModelFormat),
-                //    new CategoryClass("Музыка", cs.MusicFormats),
-                //    new CategoryClass("Программы", cs.ProgramFormats),
-                //    new CategoryClass("Видео", cs.VideoFormats)
-                //};
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
+                Clipboard.SetText(ex.ToString());
+                if(App.Language.ToString() == "ru-RU")
                 {
-                    serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, JSP);
+                    GreetingLab.Text = "Видимо, ваш файл настроек устарел. К сожалению, вам придётся удалить его и настроить всё заново.";
+                }
+                else if (App.Language.ToString() == "en-US")
+                {
+                    GreetingLab.Text = "Apparently your settings file is out of date. Unfortunately, you have to remove it and configure everything again.";
                 }
             }
         }
@@ -121,6 +109,7 @@ namespace USort
         {
             try
             {
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Greetings");
                 FolderBrowserDialog openFolder = new FolderBrowserDialog();
                 var result = openFolder.ShowDialog();
                 if (result == DialogResult.OK)
@@ -148,35 +137,25 @@ namespace USort
                 if (path != null)
                 {
                     DirectoryInfo files = new DirectoryInfo(path);
-                    Progress1.Maximum = files.GetFiles().Length;
-                    Progress1.Value = 0;
                     foreach (FileInfo file in files.GetFiles())
                     {
                         try
                         {
                             foreach (CategoryClass Category in CategoryList)
                             {
-                                foreach (string form in Category.Formats)
+                                if(Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
                                 {
-                                    foreach (string exc in FileException)
-                                    {
-                                        if (file.Extension == form && file.Name != exc)
-                                        {
-                                            Directory.CreateDirectory($@"{path}\{Category.Name}\");
-                                            fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                            File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
-                                            Progress1.Value++;
-                                        }
-                                    }
+                                    Directory.CreateDirectory($@"{path}\{Category.Name}\");
+                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
                                 }
                             }
                         }
                         catch
                         {
-
+                            //Это нужно чтобы обходить файлы, которые заняты другим процессом
                         }
                     }
-                    Progress1.Value = Progress1.Maximum;
                     GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Succ");
                 }
                 else

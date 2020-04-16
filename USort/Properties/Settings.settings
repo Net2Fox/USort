@@ -8,11 +8,11 @@
     <Setting Name="Path" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Version" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.5</Value>
-    </Setting>
     <Setting Name="AutoUpd" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.6</Value>
     </Setting>
   </Settings>
 </SettingsFile>

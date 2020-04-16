@@ -15,9 +15,9 @@
         </Menu>
         <Button x:Name="Advance_Button" Content="{DynamicResource l_AdvButton}" HorizontalAlignment="Left" Margin="288,369,0,0" VerticalAlignment="Top" Width="190" FontSize="16" Height="42"/>
         <Button x:Name="Back_Button" Content="{DynamicResource l_AdvButton2}" HorizontalAlignment="Left" Margin="608,369,0,0" VerticalAlignment="Top" Width="148" Height="39" FontSize="16"/>
-        <CheckBox x:Name="AU_CheckBox" Content="{DynamicResource l_AutoUpd}" HorizontalAlignment="Left" Margin="245,15,0,0" VerticalAlignment="Top" Height="20" Width="151" FontSize="16" Checked="AU_CheckBox_Checked" Unchecked="AU_CheckBox_Unchecked"/>
-        <Button Content="{DynamicResource l_Upd}" HorizontalAlignment="Left" Margin="222,40,0,0" VerticalAlignment="Top" Width="188" Height="28" FontSize="16" Click="Upd_Button_Click"/>
-        <CheckBox Content="{DynamicResource l_TextDark}" HorizontalAlignment="Left" Margin="452,15,0,0" VerticalAlignment="Top" Height="20" Width="118" FontSize="16" IsChecked="False" IsEnabled="False"/>
+        <CheckBox x:Name="AU_CheckBox" Content="{DynamicResource l_AutoUpd}" HorizontalAlignment="Left" Margin="222,18,0,0" VerticalAlignment="Top" Height="20" Width="310" FontSize="16" Checked="AU_CheckBox_Checked" Unchecked="AU_CheckBox_Unchecked"/>
+        <Button Content="{DynamicResource l_Upd}" HorizontalAlignment="Left" Margin="568,10,0,0" VerticalAlignment="Top" Width="188" Height="28" FontSize="16" Click="Upd_Button_Click"/>
+        <CheckBox Content="{DynamicResource l_TextDark}" HorizontalAlignment="Left" Margin="222,43,0,0" VerticalAlignment="Top" Height="20" Width="118" FontSize="16" IsChecked="False" IsEnabled="False"/>
         <ListView x:Name="FileExcep_ListView" HorizontalAlignment="Left" Height="234" VerticalAlignment="Top" Width="156" Margin="34,109,0,0">
             <ListView.View>
                 <GridView>

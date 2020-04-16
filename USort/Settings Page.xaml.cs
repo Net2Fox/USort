@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -68,52 +67,37 @@ namespace USort
             }
         }
 
-        private async void Upd_Button_Click(object sender, RoutedEventArgs e)
+        private void Upd_Button_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() =>
+            try
             {
-                try
+                using (WebClient wc = new WebClient())
                 {
-                    using (WebClient wc = new WebClient())
+                    Updates updClass = new Updates();
+                    updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update1.json"));
+                    if (updClass.LatestVersion != Properties.Settings.Default.Version && updClass.LatestVersion > Properties.Settings.Default.Version)
                     {
-                        Updates updClass = new Updates();
-                        updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update.json"));
-                        if (updClass.LastetVersion != Properties.Settings.Default.Version && updClass.LastetVersion > Properties.Settings.Default.Version)
+                        Text1.Text = "GDE OBNOVA SUKA";
+                        Updater upWin = new Updater(updClass.LatestVersion ,updClass.URL, updClass.Changelogs);
+                        upWin.ShowDialog();
+                    }
+                    else
+                    {
+                        if (App.Language.ToString() == "ru-RU")
                         {
-                            MessageBoxResult result = MessageBoxResult.None;
-                            if (App.Language.ToString() == "ru-RU")
-                            {
-                                result = MessageBox.Show($"Вышла новая версия! Желаете её скачать?", "Обновление", MessageBoxButton.YesNo);
-                            }
-                            else if (App.Language.ToString() == "en-US")
-                            {
-                                result = MessageBox.Show($"New version released! Would you like to download it?", "Update", MessageBoxButton.YesNo);
-                            }
-
-                            if (result == MessageBoxResult.Yes)
-                            {
-                                Updater updWin = new Updater();
-                                updWin.Show();
-                            }
+                            MessageBox.Show($"У вас самая последняя версия!", "Обновление", MessageBoxButton.OK);
                         }
-                        else
-                        {
-                            if (App.Language.ToString() == "ru-RU")
-                            {
-                                MessageBox.Show($"У вас самая последняя версия!", "Обновление", MessageBoxButton.OK);
-                            }
-                            else if (App.Language.ToString() == "en-US")
-                            { 
-                                MessageBox.Show($"You have the latest version!", "Update", MessageBoxButton.OK);
-                            }
+                        else if (App.Language.ToString() == "en-US")
+                        { 
+                            MessageBox.Show($"You have the latest version!", "Update", MessageBoxButton.OK);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    Clipboard.SetText(ex.ToString());
-                }
-            });
+            }
+            catch (Exception ex)
+            {
+                Clipboard.SetText(ex.ToString());
+            }
         }
 
         private void AU_CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -149,9 +133,9 @@ namespace USort
                     serializer.Serialize(writer, Pages.mp.JSP);
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                
+                Clipboard.SetText(ex.ToString());
             }
         }
 

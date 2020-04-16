@@ -23,10 +23,6 @@
     <v:String x:Key="l_Version">Версия:</v:String>
     <v:String x:Key="l_AdvButton">Расширенные настройки</v:String>
     <v:String x:Key="l_AdvButton2">Назад</v:String>
-    <v:String x:Key="l_Connecting">Устанавливаю соединение...</v:String>
-    <v:String x:Key="l_NameDown">Обновление</v:String>
-    <v:String x:Key="l_Download">Скачивание</v:String>
-
     <v:String x:Key="l_TextCateName">Название категории</v:String>
     <v:String x:Key="l_AddTitle">Добавление категории</v:String>
     <v:String x:Key="l_EditTitle">Редактирование категории</v:String>
@@ -35,12 +31,14 @@
     <v:String x:Key="l_BoxName">Напишите название для новой категории</v:String>
     <v:String x:Key="l_BoxFormats">Здесь пишите расширения файлов начиная с "*."</v:String>
     <v:String x:Key="l_Help">Пишите расширения файлов начиная с "*."</v:String>
-
     <v:String x:Key="l_HeadName">Имя</v:String>
     <v:String x:Key="l_HeadRule">Правило</v:String>
     <v:String x:Key="l_HeadFileExce">Имя файла</v:String>
     <v:String x:Key="l_TextFileExce">Исключенные файлы</v:String>
     <v:String x:Key="l_TextDark">Тёмная тема</v:String>
-    <v:String x:Key="l_AutoUpd">Автообновление</v:String>
+    <v:String x:Key="l_AutoUpd">Проверка обновлений при запуске</v:String>
     <v:String x:Key="l_Upd">Проверить обновления</v:String>
+
+    <v:String x:Key="l_Yes">Да</v:String>
+    <v:String x:Key="l_No">Нет</v:String>
 </ResourceDictionary>

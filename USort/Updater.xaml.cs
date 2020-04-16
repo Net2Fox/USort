@@ -22,21 +22,29 @@ namespace USort
     /// </summary>
     public partial class Updater : Window
     {
-        public Updater()
+        string UR;
+        public Updater(double LatestVersion, string URL, string Changelog)
         {
             InitializeComponent();
-            using (WebClient wc = new WebClient())
+            UR = URL;
+            if(App.Language.ToString() == "ru-RU")
             {
-                Uri down_Uri = new Uri("http://net2fox.kl.com.ua/Latest.exe");
-                wc.DownloadFileAsync(down_Uri, $"{Environment.CurrentDirectory}/Latest.exe");
-                TextDownload.SetResourceReference(TextBlock.TextProperty, "l_Download"); 
-                wc.DownloadProgressChanged += (s, e) => { ProgressBar.Maximum = e.TotalBytesToReceive;
-                    ProgressBar.Value = e.BytesReceived;
-                    TextProgress.Text = e.ProgressPercentage.ToString(); 
-
-                };
-                wc.DownloadFileCompleted += (s, e) => { Process.Start($"{Environment.CurrentDirectory}/Latest.exe"); Environment.Exit(0); };
+                UpdaterText.Text = $"Найдена новая версия USort {LatestVersion.ToString().Replace(",", ".")}.\n{Changelog}\nЖелаете обновится?";
             }
+            else if(App.Language.ToString() == "en-US")
+            {
+                UpdaterText.Text = $"New version of USort {LatestVersion.ToString().Replace(",", ".")} found.\n{Changelog}\nWould you like to upgrade?";
+            }
+        }
+
+        private void No_Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Yes_Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(UR);
         }
     }
 }
