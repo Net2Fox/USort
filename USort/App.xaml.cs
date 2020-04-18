@@ -15,7 +15,7 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = " Beta 0.6"; //Отображение версии
+        internal static string version = " Beta 0.61"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
         internal static List<string> FileException; //Исключения файлов из сортировки
