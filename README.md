@@ -1,5 +1,5 @@
 # USort
-USort - an automatic sorter of your files!
+USort - sorter of your files!
 ## What can this sorter do?
 USort can sort pre-installed file extensions by specific folders, and you can also create your own categories or edit previously created ones!
 ###  Note on creating and editing categories: the file extension must be specified starting with *. and without spaces between them!
@@ -12,7 +12,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 - The "Quick start" function, i.e. you can drag the folder where you want to sort files directly to the executable file of the program and it will immediately start with the path to this folder.
 
 ## Russian
-USort - автоматический сортировщик ваших файлов!
+USort - сортировщик ваших файлов!
 ### Что умеет данный сортировщик?
 USort умеет сортировать заранее предустановленные расширения файлов по определённым папкам, а также вы можете создавать свои категории или редактировать ранее созданные!
 ### Пометка по созданию и редактированию категорий: расширение файлов обязательно надо указывать начиная с *. и без пробелов между ними!
