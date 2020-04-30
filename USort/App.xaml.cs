@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using Newtonsoft.Json;
 using Application = System.Windows.Application;
+using Apl = System.Windows.Forms.Application;
 
 namespace USort
 {
@@ -15,21 +17,62 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = " Beta 0.61"; //Отображение версии
+        internal static string version = " Beta 0.62"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
         internal static List<string> FileException; //Исключения файлов из сортировки
         internal static bool creating;
+        internal static JSONParser JSP = new JSONParser();
 
 
         //Параметры запуска
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
             foreach (string arg in e.Args)
             {
-                USort.Properties.Settings.Default.Path = arg;
-                USort.Properties.Settings.Default.Save();
+                try
+                {
+                    //Тихий режим. Нужен для того, чтобы соврешать сортировку без запуска окна программы. 
+                    if (arg == "sort")
+                    {
+                        string json = File.ReadAllText($@"{Apl.StartupPath}\Settings.json");
+                        JSP = JsonConvert.DeserializeObject<JSONParser>(json);
+                        CategoryList = JSP.Categories;
+                        FileException = JSP.FileExceptions;
+                        DirectoryInfo files = new DirectoryInfo(e.Args[1]);
+                        foreach (FileInfo file in files.GetFiles())
+                        {
+                            try
+                            {
+                                foreach (CategoryClass Category in CategoryList)
+                                {
+                                    if (Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
+                                    {
+                                        Directory.CreateDirectory($@"{e.Args[1]}\{Category.Name}\");
+                                        string fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                        File.Move(fullDirectoryFile, $@"{e.Args[1]}\{Category.Name}\{file.Name}");
+                                    }
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+                                Clipboard.SetText(ex.ToString());
+                                //Это нужно чтобы обходить файлы, которые заняты другим процессом
+                            }
+                        }
+                        this.Shutdown();
+                    }
+                    //------------------------------------------------------------------
+                    else
+                    {
+                        USort.Properties.Settings.Default.Path = arg;
+                        USort.Properties.Settings.Default.Save();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    Clipboard.SetText(ex.ToString());
+                }
             }
         }
         //------------------------------------------------------------------

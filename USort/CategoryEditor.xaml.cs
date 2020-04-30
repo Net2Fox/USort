@@ -79,12 +79,14 @@ namespace USort
                     }
                     CategoryList.Add(newCategory);
                 }
+                JSP.Categories = CategoryList;
+                JSP.FileExceptions = FileException;
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{Environment.CurrentDirectory}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, CategoryList);
+                    serializer.Serialize(writer, JSP);
                 }
                 this.Close();
             }

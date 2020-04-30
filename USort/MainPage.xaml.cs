@@ -21,7 +21,6 @@ namespace USort
     {
         internal string path = null;
         private string fullDirectoryFile = null;
-        internal JSONParser JSP = new JSONParser(); 
 
         public MainPage()
         {

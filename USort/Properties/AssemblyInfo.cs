@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Net2Fox")]
 [assembly: AssemblyProduct("USort")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright © 2020 Net2Fox")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

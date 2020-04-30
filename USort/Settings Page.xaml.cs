@@ -123,14 +123,14 @@ namespace USort
                 }
                 FileExcep_ListView.ItemsSource = null;
                 FileExcep_ListView.ItemsSource = FileException;
-                Pages.mp.JSP.Categories = CategoryList;
-                Pages.mp.JSP.FileExceptions = FileException; 
+                JSP.Categories = CategoryList;
+                JSP.FileExceptions = FileException; 
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{System.Windows.Forms.Application.StartupPath}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, Pages.mp.JSP);
+                    serializer.Serialize(writer, JSP);
                 }
             }
             catch(Exception ex)
@@ -153,20 +153,26 @@ namespace USort
                 }
                 FileExcep_ListView.ItemsSource = null;
                 FileExcep_ListView.ItemsSource = FileException;
-                Pages.mp.JSP.Categories = CategoryList;
-                Pages.mp.JSP.FileExceptions = FileException; 
+                JSP.Categories = CategoryList;
+                JSP.FileExceptions = FileException; 
                 JsonSerializer serializer = new JsonSerializer();
                 using (StreamWriter sw = new StreamWriter($@"{System.Windows.Forms.Application.StartupPath}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, Pages.mp.JSP);
+                    serializer.Serialize(writer, JSP);
                 }
             }
             catch
             {
                
             }
+        }
+
+        private void Planned_Button_Click(object sender, RoutedEventArgs e)
+        {
+            PlannedWin pw = new PlannedWin();
+            pw.ShowDialog();
         }
     }
 }

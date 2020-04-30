@@ -80,6 +80,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -113,6 +114,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages.cs" />
+    <Compile Include="PlannedWin.xaml.cs">
+      <DependentUpon>PlannedWin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Settings Page.xaml.cs">
       <DependentUpon>Settings Page.xaml</DependentUpon>
     </Compile>
@@ -155,6 +159,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PlannedWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Settings Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

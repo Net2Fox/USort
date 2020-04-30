@@ -61,7 +61,7 @@ namespace USort.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.61")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.62")]
         public double Version {
             get {
                 return ((double)(this["Version"]));

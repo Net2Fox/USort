@@ -11,7 +11,7 @@
     <Grid Width="794" Background="White" Margin="0" Height="421">
         <Button Content="{DynamicResource l_Select}" HorizontalAlignment="Left" Margin="169,191,0,0" VerticalAlignment="Top" Width="184" Click="PathButton_Click" Height="29" FontSize="16"/>
         <TextBox x:Name="DirectoryPath" HorizontalAlignment="Center" Height="34" TextAlignment="Center" Margin="12,153,10,0" TextWrapping="Wrap" Text="{DynamicResource l_Box}" VerticalAlignment="Top" Width="772" FontSize="16" IsReadOnly="True"/>
-        <TextBlock x:Name="GreetingLab" TextAlignment="Center"  HorizontalAlignment="Center" Margin="12,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="138" Width="772" FontSize="16"><Run Text="{DynamicResource l_Greetings}"/></TextBlock>
+        <TextBlock x:Name="GreetingLab" Text="{DynamicResource l_Greetings}" TextAlignment="Center"  HorizontalAlignment="Center" Margin="12,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="138" Width="772" FontSize="16" />
         <Button x:Name="Settings_Button" Content="{DynamicResource l_Settings}" HorizontalAlignment="Center" Margin="280,226,292,149" VerticalAlignment="Center" Width="222" Height="46" FontSize="16"/>
         <Button x:Name="Sort_Button" Content="{DynamicResource l_Sort}" HorizontalAlignment="Left" Margin="430,191,0,0" VerticalAlignment="Top" Width="184" Click="Sort_Button_Click" Height="29" FontSize="16"/>
         <Label x:Name="Version_Label" Content="" HorizontalAlignment="Left" Margin="7,390,0,0" VerticalAlignment="Top" Width="160" FontSize="12"/>

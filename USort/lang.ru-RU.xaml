@@ -38,7 +38,7 @@
     <v:String x:Key="l_TextDark">Тёмная тема</v:String>
     <v:String x:Key="l_AutoUpd">Проверка обновлений при запуске</v:String>
     <v:String x:Key="l_Upd">Проверить обновления</v:String>
-
+    <v:String x:Key="l_PlannedButt">Запланированная сортировка</v:String>
     <v:String x:Key="l_Yes">Да</v:String>
     <v:String x:Key="l_No">Нет</v:String>
 </ResourceDictionary>

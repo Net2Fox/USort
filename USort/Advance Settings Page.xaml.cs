@@ -91,13 +91,13 @@ namespace USort
                 }
                 ListTest.ItemsSource = Cate2;
                 JsonSerializer serializer = new JsonSerializer();
-                Pages.mp.JSP.Categories = CategoryList;
-                Pages.mp.JSP.FileExceptions = FileException;
+                JSP.Categories = CategoryList;
+                JSP.FileExceptions = FileException;
                 using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
                     serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, Pages.mp.JSP);
+                    serializer.Serialize(writer, JSP);
                 }
             }
             catch

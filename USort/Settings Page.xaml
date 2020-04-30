@@ -29,5 +29,6 @@
         <Button x:Name="Minus_Button" Content="-" HorizontalAlignment="Left" Margin="159,381,0,0" VerticalAlignment="Top" Width="30" FontSize="16" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Minus_Button_Click"/>
         <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="34,87,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextFileExce}" VerticalAlignment="Top" FontSize="15" Width="155" TextAlignment="Center" Height="22"/>
         <TextBox x:Name="FileExc_TextBox" HorizontalAlignment="Left" Height="30" Margin="34,348,0,0" TextWrapping="Wrap" Text="file.exe" VerticalAlignment="Top" Width="155" FontSize="16"/>
+        <Button x:Name="Planned_Button" Content="{DynamicResource l_PlannedButt}" HorizontalAlignment="Left" Margin="544,66,0,0" VerticalAlignment="Top" Width="231" Height="28" FontSize="16" Click="Planned_Button_Click" IsEnabled="False"/>
     </Grid>
 </Page>

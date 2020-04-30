@@ -38,7 +38,7 @@
     <v:String x:Key="l_TextDark">Dark theme</v:String>
     <v:String x:Key="l_AutoUpd">Check for updates at startup</v:String>
     <v:String x:Key="l_Upd">Check for updates</v:String>
-
+    <v:String x:Key="l_PlannedButt">Planned sorting</v:String>
     <v:String x:Key="l_Yes">Yes</v:String>
     <v:String x:Key="l_No">No</v:String>
 </ResourceDictionary>
