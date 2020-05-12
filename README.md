@@ -1,4 +1,5 @@
 # USort
+## Development is temporarily suspended. The program already has basic functionality and you can safely use it. Perhaps in the summer there will be the last major update to 1.0.
 USort - sorter of your files!
 ## What can this sorter do?
 USort can sort pre-installed file extensions by specific folders, and you can also create your own categories or edit previously created ones!
@@ -20,6 +21,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 </details>
 
 ## Russian
+## Разработка временно приостановлена. Программа уже имеет базовый функционал и ей можно спокойно пользоваться. Возможно, летом выйдет последнее крупное обновление до 1.0.
 USort - сортировщик ваших файлов!
 ### Что умеет данный сортировщик?
 USort умеет сортировать заранее предустановленные расширения файлов по определённым папкам, а также вы можете создавать свои категории или редактировать ранее созданные!
