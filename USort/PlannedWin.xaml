@@ -19,7 +19,7 @@
             <TextBlock Text="Еженедельно"/>
             <TextBlock Text="Ежемесячно"/>
         </ComboBox>
-        <Frame x:Name="Date_Frame" Content="Frame" HorizontalAlignment="Left" Height="127" Margin="432,148,0,0" VerticalAlignment="Top" Width="280" NavigationUIVisibility="Hidden"/>
+        <Frame x:Name="Peroid_Frame" HorizontalAlignment="Left" Height="127" Margin="432,148,0,0" VerticalAlignment="Top" Width="280" NavigationUIVisibility="Hidden"/>
         <TextBlock HorizontalAlignment="Left" Margin="107,151,0,0" TextWrapping="Wrap" Text=":" VerticalAlignment="Top" TextAlignment="Center" Height="18" Width="8"/>
 
     </Grid>

@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:USort"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
-    <v:String x:Key="l_Greetings">Приветствуем тебя в USort - автоматический сортировщик ваших файлов. Для начала выбери папку, файлы в которой ты хочешь отсортировать.</v:String>
+    <v:String x:Key="l_Greetings">Приветствуем тебя в USort - сортировщик ваших файлов. Для начала выбери папку, файлы в которой ты хочешь отсортировать.</v:String>
     <v:String x:Key="l_Sort">Сортировка</v:String>
     <v:String x:Key="l_Box">Выбранный вами путь будет отображаться здесь</v:String>
     <v:String x:Key="l_LangMenu">Сменить язык</v:String>
@@ -29,10 +29,11 @@
     <v:String x:Key="l_TextFormats">Расширения файлов</v:String>
     <v:String x:Key="l_Save">Сохранить</v:String>
     <v:String x:Key="l_BoxName">Напишите название для новой категории</v:String>
-    <v:String x:Key="l_BoxFormats">Здесь пишите расширения файлов начиная с "*."</v:String>
-    <v:String x:Key="l_Help">Пишите расширения файлов начиная с "*."</v:String>
+    <v:String x:Key="l_BoxFormats">Здесь пишите расширения файлов начиная с "." и заканчивая ";"</v:String>
+    <v:String x:Key="l_Help">Пишите расширения файлов начиная с "." и заканчивая ";"
+        Например: .png; .gif; .mp3</v:String>
     <v:String x:Key="l_HeadName">Имя</v:String>
-    <v:String x:Key="l_HeadRule">Правило</v:String>
+    <v:String x:Key="l_HeadRule">Расширения</v:String>
     <v:String x:Key="l_HeadFileExce">Имя файла</v:String>
     <v:String x:Key="l_TextFileExce">Исключенные файлы</v:String>
     <v:String x:Key="l_TextDark">Тёмная тема</v:String>

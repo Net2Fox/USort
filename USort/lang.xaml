@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:USort"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
-    <v:String x:Key="l_Greetings">Welcome to USort - an automatic sorter of your files. First, specify the path to the folder in which files you want to sort.</v:String>
+    <v:String x:Key="l_Greetings">Welcome to USort - sorter of your files. First, specify the path to the folder in which files you want to sort.</v:String>
     <v:String x:Key="l_Sort">Sort</v:String>
     <v:String x:Key="l_Box">Your chosen path will be displayed here</v:String>
     <v:String x:Key="l_LangMenu">Change language</v:String>
@@ -32,7 +32,7 @@
     <v:String x:Key="l_BoxFormats">Write file extensions here starting with "*."</v:String>
     <v:String x:Key="l_Help">Write file extensions starting with "*."</v:String>
     <v:String x:Key="l_HeadName">Name</v:String>
-    <v:String x:Key="l_HeadRule">Rule</v:String>
+    <v:String x:Key="l_HeadRule">Extensions</v:String>
     <v:String x:Key="l_HeadFileExce">File name</v:String>
     <v:String x:Key="l_TextFileExce">Excluded files</v:String>
     <v:String x:Key="l_TextDark">Dark theme</v:String>
