@@ -14,7 +14,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 <details>
   <summary>GIF</summary>
   
-  ![](https://github.com/Net2Fox/USort/blob/master/quick%20start.gif)
+  ![](https://github.com/Net2Fox/USort/blob/master/New%20Quick%20Start.gif)
   
 </details>
 
