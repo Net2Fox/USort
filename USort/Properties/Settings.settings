@@ -9,10 +9,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="AutoUpd" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Version" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.62</Value>
+      <Value Profile="(Default)">0.63</Value>
     </Setting>
   </Settings>
 </SettingsFile>

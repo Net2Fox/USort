@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using static USort.App;
 using Application = System.Windows.Forms.Application;
@@ -49,7 +49,7 @@ namespace USort
                     foreach (string formats in category.Formats)
                     {
                         name = category.Name;
-                        form += $" {formats};";
+                        form += $"{formats}; ";
                     }
                     CategoryClass2 te = new CategoryClass2(name, form);
                     Cate2.Add(te);
@@ -62,6 +62,11 @@ namespace USort
         }
 
         private void Delete_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
+        }
+
+        private void Delete()
         {
             try
             {
@@ -86,7 +91,7 @@ namespace USort
                     }
                     CategoryClass2 te = new CategoryClass2(name, form);
                     Cate2.Add(te);
-                    form = ""; 
+                    form = "";
                     name = "";
                 }
                 ListTest.ItemsSource = Cate2;
@@ -108,6 +113,11 @@ namespace USort
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
         {
+            Edit();
+        }
+
+        private void Edit()
+        {
             try
             {
                 creating = false;
@@ -120,8 +130,8 @@ namespace USort
                     }
                 }
                 CategoryEditor ce_win = new CategoryEditor();
-                ce_win.Closing += (s, e) => 
-                { 
+                ce_win.Closing += (s, e) =>
+                {
                     string name = "";
                     string form = "";
                     List<CategoryClass2> Cate2 = new List<CategoryClass2> { };
@@ -134,7 +144,7 @@ namespace USort
                         }
                         CategoryClass2 te = new CategoryClass2(name, form);
                         Cate2.Add(te);
-                        form = ""; 
+                        form = "";
                         name = "";
                     }
                     ListTest.ItemsSource = Cate2;
@@ -143,6 +153,19 @@ namespace USort
             }
             catch
             {
+
+            }
+        }
+
+        private void Keyboard(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Edit();
+            }
+            else if(e.Key == Key.Delete)
+            {
+                Delete();
             }
         }
     }

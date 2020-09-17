@@ -32,7 +32,7 @@ namespace USort
                 Name_TextBox.Text = CategoryList[indexIn].Name;
                 foreach (string str in  CategoryList[indexIn].Formats)
                 {
-                    Formats_TextBox.Text += $"*{str}";
+                    Formats_TextBox.Text += $"{str}; ";
                 }
             }
             else
@@ -46,7 +46,8 @@ namespace USort
                     this.Title = "Add";
                 }
                 Name_TextBox.SetResourceReference(TextBox.TextProperty, "l_BoxName");
-                Formats_TextBox.SetResourceReference(TextBox.TextProperty, "l_BoxFormats");
+                //Formats_TextBox.SetResourceReference(TextBox.TextProperty, "l_BoxFormats");
+                Help_Text.SetResourceReference(TextBlock.TextProperty, "l_Help");
             }
         }
 
@@ -56,25 +57,47 @@ namespace USort
             {
                 if (creating == false)
                 {
-                    var str2 = Formats_TextBox.Text.Split('*');
+                    var str2 = Formats_TextBox.Text.Split('.');
                     CategoryList[indexIn].Formats.Clear();
                     foreach (string s in str2)
                     {
                         if (s != "")
                         {
-                            CategoryList[indexIn].Formats.Add(s);
+                            if (s.EndsWith("; "))
+                            {
+                                CategoryList[indexIn].Formats.Add(s.Remove(s.Length - 2).Insert(0, "."));
+                            }
+                            else if(s.EndsWith(";"))
+                            {
+                                CategoryList[indexIn].Formats.Add(s.Remove(s.Length - 1).Insert(0, "."));
+                            }
+                            else
+                            {
+                                CategoryList[indexIn].Formats.Add(s.Insert(0, "."));
+                            }
                         }
                     }
                 }
                 else
                 {
                     CategoryClass newCategory = new CategoryClass(Name_TextBox.Text, new ObservableCollection<string>());
-                    var str2 = Formats_TextBox.Text.Split('*');
+                    var str2 = Formats_TextBox.Text.Split('.');
                     foreach (string s in str2)
                     {
                         if (s != "")
                         {
-                            newCategory.Formats.Add(s);
+                            if (s.EndsWith("; "))
+                            {
+                                newCategory.Formats.Add(s.Remove(s.Length - 2).Insert(0, "."));
+                            }
+                            else if (s.EndsWith(";"))
+                            {
+                                newCategory.Formats.Add(s.Remove(s.Length - 1).Insert(0, "."));
+                            }
+                            else
+                            {
+                                newCategory.Formats.Add(s.Insert(0, "."));
+                            }
                         }
                     }
                     CategoryList.Add(newCategory);

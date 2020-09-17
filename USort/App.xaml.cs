@@ -17,7 +17,7 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = " Beta 0.62"; //Отображение версии
+        internal static string version = "Beta 0.63"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
         internal static List<string> FileException; //Исключения файлов из сортировки
@@ -32,7 +32,7 @@ namespace USort
             {
                 try
                 {
-                    //Тихий режим. Нужен для того, чтобы соврешать сортировку без запуска окна программы. 
+                    //Тихий режим. Нужен для того, чтобы совершать сортировку без запуска окна программы. 
                     if (arg == "sort")
                     {
                         string json = File.ReadAllText($@"{Apl.StartupPath}\Settings.json");
