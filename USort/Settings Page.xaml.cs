@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json;
@@ -18,7 +19,7 @@ namespace USort
         public Settings_Page()
         {
             InitializeComponent();
-            //AU_CheckBox.IsChecked = Properties.Settings.Default.AutoUpd;
+            AU_CheckBox.IsChecked = Convert.ToBoolean(Properties.Settings.Default.AutoUpd);
             FileExcep_ListView.ItemsSource = FileException;
             try
             {
@@ -28,15 +29,7 @@ namespace USort
                 foreach (var lang in App.Languages)
                 {
                     MenuItem menuLang = new MenuItem();
-                    if(Convert.ToString(lang) == "ru-RU")
-                    {
-                        menuLang.Header = "Русский";
-                    }
-                    else if(Convert.ToString(lang) == "en-US")
-                    {
-                        menuLang.Header = "English";
-                    }
-                    //menuLang.Header = lang.DisplayName;
+                    menuLang.Header = lang.DisplayName;
                     menuLang.Tag = lang;
                     menuLang.IsChecked = lang.Equals(currLang);
                     menuLang.Click += ChangeLanguageClick;

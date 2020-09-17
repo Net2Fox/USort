@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="" Height="206.716" Width="792" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="" Height="199.625" Width="792" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="Name_TextBox" HorizontalAlignment="Left" Height="24" Margin="173,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="382" FontSize="16" GotFocus="TextBox_GotFocus"/>
         <TextBox x:Name="Formats_TextBox" HorizontalAlignment="Left" Height="23" Margin="173,63,-1,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="590" FontSize="16" GotFocus="TextBox_GotFocus"/>
         <TextBlock x:Name="Name_Text" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextCateName}" VerticalAlignment="Top" FontSize="16" Height="27" Width="155" />
         <TextBlock x:Name="Formats_Text" HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextFormats}" VerticalAlignment="Top" FontSize="16" Height="27" Width="155"/>
-        <Button x:Name="CategorySave_Button" Content="{DynamicResource l_Save}" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="142" Height="38" FontSize="16" Click="CategorySave_Button_Click"/>
-        <TextBlock x:Name="Help_Text" HorizontalAlignment="Left" Margin="173,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="16" TextAlignment="Center" Height="54" Width="590"/>
+        <Button x:Name="CategorySave_Button" Content="{DynamicResource l_Save}" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" Width="142" Height="38" FontSize="16" Click="CategorySave_Button_Click"/>
+        <TextBlock x:Name="Help_Text" HorizontalAlignment="Left" Margin="229,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" FontSize="16" TextAlignment="Center" Height="32" Width="497"/>
     </Grid>
 </Window>

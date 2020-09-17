@@ -110,15 +110,6 @@
     <Compile Include="CategoryEditor.xaml.cs">
       <DependentUpon>CategoryEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EveryDayPage.xaml.cs">
-      <DependentUpon>EveryDayPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EveryMonthPage.xaml.cs">
-      <DependentUpon>EveryMonthPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="EveryWeekPage.xaml.cs">
-      <DependentUpon>EveryWeekPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -141,18 +132,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CategoryEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EveryDayPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EveryMonthPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EveryWeekPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

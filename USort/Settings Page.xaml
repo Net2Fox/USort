@@ -15,8 +15,8 @@
         </Menu>
         <Button x:Name="Advance_Button" Content="{DynamicResource l_AdvButton}" HorizontalAlignment="Left" Margin="288,369,0,0" VerticalAlignment="Top" Width="190" FontSize="16" Height="42"/>
         <Button x:Name="Back_Button" Content="{DynamicResource l_AdvButton2}" HorizontalAlignment="Left" Margin="608,369,0,0" VerticalAlignment="Top" Width="148" Height="39" FontSize="16"/>
-        <CheckBox x:Name="AU_CheckBox" Content="{DynamicResource l_AutoUpd}" HorizontalAlignment="Left" Margin="222,18,0,0" VerticalAlignment="Top" Height="20" Width="310" FontSize="16" Checked="AU_CheckBox_Checked" Unchecked="AU_CheckBox_Unchecked" IsEnabled="False"/>
-        <Button Content="{DynamicResource l_Upd}" HorizontalAlignment="Left" Margin="568,10,0,0" VerticalAlignment="Top" Width="188" Height="28" FontSize="16" Click="Upd_Button_Click" IsEnabled="False"/>
+        <CheckBox x:Name="AU_CheckBox" Content="{DynamicResource l_AutoUpd}" HorizontalAlignment="Left" Margin="222,18,0,0" VerticalAlignment="Top" Height="20" Width="310" FontSize="16" Checked="AU_CheckBox_Checked" Unchecked="AU_CheckBox_Unchecked"/>
+        <Button Content="{DynamicResource l_Upd}" HorizontalAlignment="Left" Margin="568,10,0,0" VerticalAlignment="Top" Width="188" Height="28" FontSize="16" Click="Upd_Button_Click"/>
         <CheckBox Content="{DynamicResource l_TextDark}" HorizontalAlignment="Left" Margin="222,43,0,0" VerticalAlignment="Top" Height="20" Width="118" FontSize="16" IsChecked="False" IsEnabled="False"/>
         <ListView x:Name="FileExcep_ListView" HorizontalAlignment="Left" Height="234" VerticalAlignment="Top" Width="156" Margin="34,109,0,0">
             <ListView.View>
@@ -30,6 +30,5 @@
         <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="34,87,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextFileExce}" VerticalAlignment="Top" FontSize="15" Width="155" TextAlignment="Center" Height="22"/>
         <TextBox x:Name="FileExc_TextBox" HorizontalAlignment="Left" Height="30" Margin="34,348,0,0" TextWrapping="Wrap" Text="file.exe" VerticalAlignment="Top" Width="155" FontSize="16"/>
         <Button x:Name="Planned_Button" Content="{DynamicResource l_PlannedButt}" HorizontalAlignment="Left" Margin="544,66,0,0" VerticalAlignment="Top" Width="231" Height="28" FontSize="16" Click="Planned_Button_Click" IsEnabled="False"/>
-        <TextBlock x:Name="Sosi" HorizontalAlignment="Left" Margin="345,309,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Page>
