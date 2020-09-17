@@ -2,7 +2,6 @@
 USort - sorter of your files!
 ## What can this sorter do?
 USort can sort pre-installed file extensions by specific folders, and you can also create your own categories or edit previously created ones!
-###  Note on creating and editing categories: the file extension must be specified starting with *. and without spaces between them!
 ### [The road to release!](https://github.com/Net2Fox/USort/projects/1)
 ## Features
 - Ease. The total weight of the program is less than 1 MB.
@@ -15,7 +14,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 <details>
   <summary>GIF</summary>
   
-  ![](https://github.com/Net2Fox/USort/blob/master/quick%20start.gif)
+  ![](https://github.com/Net2Fox/USort/blob/master/New%20Quick%20Start.gif)
   
 </details>
 
@@ -23,14 +22,13 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 USort - сортировщик ваших файлов!
 ### Что умеет данный сортировщик?
 USort умеет сортировать заранее предустановленные расширения файлов по определённым папкам, а также вы можете создавать свои категории или редактировать ранее созданные!
-### Пометка по созданию и редактированию категорий: расширение файлов обязательно надо указывать начиная с *. и без пробелов между ними!
 ### [Дорога к релизу!](https://github.com/Net2Fox/USort/projects/1)
 ## Особенности
 - Лёгкость. Общий вес программы менее 1 мб.
 - Быстрота. Сортировка файлов происходит достаточно быстро.
 - Портативность. Программа не требует установки, вы просто разархивируете папку и всё.
 - Открытость. Весь исходный код программы доступен на GitHub.
-- Функция "Быстрый запуск", т.е. вы можете перетащить папку, файлы в которой вы хотите отсортировать прямо на исполняемый файл программы и она сразу запустится с путем до этой папки.
+- Функция "Быстрый запуск", т.е. вы можете перетащить папку, файлы в которой вы хотите отсортировать прямо на исполняемый файл программы и она сразу запустится с путем до этой папки (см. GIF).
 
 
 ## Credits
