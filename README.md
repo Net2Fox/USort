@@ -34,7 +34,6 @@ USort умеет сортировать заранее предустановл�
 ## Credits
 Special thanks to:
 - [Json.NET](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET
-- [GongSolutions.WPF.DragDrop](https://github.com/punker76/gong-wpf-dragdrop)(Not relevant for versions 0.4 and later) - An easy to use drag'n'drop framework for WPF
 - [NegaTiv](https://vk.com/lilnegativ) - idea and help in testing.
 - [ZerZru](https://github.com/ZerZru) - help in testing.
 - [Epsil0neR](https://github.com/Epsil0neR/WPF-Localization) - For WPF localization guide without restarting
