@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Controls;
 using Newtonsoft.Json;
+using static USort.Pages;
 using static USort.App;
 
 namespace USort
@@ -68,8 +70,8 @@ namespace USort
                 if (lang != null)
                 {
                     App.Language = lang;
-                    Properties.Settings.Default.DefaultLanguage = App.Language;
-                    Properties.Settings.Default.Save();
+                    //Properties.Settings.Default.DefaultLanguage = App.Language;
+                    //Properties.Settings.Default.Save();
                 }
             }
         }
@@ -78,28 +80,28 @@ namespace USort
         {
             try
             {
-                using (WebClient wc = new WebClient())
-                {
-                    Updates updClass = new Updates();
-                    updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update1.json"));
-                    if (updClass.LatestVersion != Properties.Settings.Default.Version && updClass.LatestVersion > Properties.Settings.Default.Version)
-                    {
-                        Text1.Text = "GDE OBNOVA SUKA";
-                        Updater upWin = new Updater(updClass.LatestVersion ,updClass.URL, updClass.Changelogs);
-                        upWin.ShowDialog();
-                    }
-                    else
-                    {
-                        if (App.Language.ToString() == "ru-RU")
-                        {
-                            MessageBox.Show($"У вас самая последняя версия!", "Обновление", MessageBoxButton.OK);
-                        }
-                        else if (App.Language.ToString() == "en-US")
-                        { 
-                            MessageBox.Show($"You have the latest version!", "Update", MessageBoxButton.OK);
-                        }
-                    }
-                }
+                //using (WebClient wc = new WebClient())
+                //{
+                //    Updates updClass = new Updates();
+                //    updClass = JsonConvert.DeserializeObject<Updates>(wc.DownloadString("http://net2fox.site/download/Update1.json"));
+                //    if (updClass.LatestVersion != Properties.Settings.Default.Version && updClass.LatestVersion > Properties.Settings.Default.Version)
+                //    {
+                //        Text1.Text = "GDE OBNOVA SUKA";
+                //        Updater upWin = new Updater(updClass.LatestVersion ,updClass.URL, updClass.Changelogs);
+                //        upWin.ShowDialog();
+                //    }
+                //    else
+                //    {
+                //        if (App.Language.ToString() == "ru-RU")
+                //        {
+                //            MessageBox.Show($"У вас самая последняя версия!", "Обновление", MessageBoxButton.OK);
+                //        }
+                //        else if (App.Language.ToString() == "en-US")
+                //        { 
+                //            MessageBox.Show($"You have the latest version!", "Update", MessageBoxButton.OK);
+                //        }
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -109,14 +111,14 @@ namespace USort
 
         private void AU_CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.AutoUpd = Convert.ToBoolean(AU_CheckBox.IsChecked);
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.AutoUpd = Convert.ToBoolean(AU_CheckBox.IsChecked);
+            //Properties.Settings.Default.Save();
         }
 
         private void AU_CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.AutoUpd = Convert.ToBoolean(AU_CheckBox.IsChecked);
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.AutoUpd = Convert.ToBoolean(AU_CheckBox.IsChecked);
+            //Properties.Settings.Default.Save();
         }
 
         private void Plus_Button_Click(object sender, RoutedEventArgs e)

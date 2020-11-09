@@ -14,25 +14,26 @@ namespace USort
     /// </summary>
     public partial class Advance_Settings_Page : Page
     {
+
         public Advance_Settings_Page()
         {
             InitializeComponent();
-            string name = "";
-            string form = "";
-            List<CategoryClass2> Cate2 = new List<CategoryClass2> { };
+            string name = null;
+            string formats = null;
+            List<ClassForList> List = new List<ClassForList> { };
             foreach (CategoryClass category in CategoryList)
             {
-                foreach (string formats in category.Formats)
+                foreach (string format in category.Formats)
                 {
-                    name = category.Name;
-                    form += $" {formats};";
+                    formats += $" {format};";
                 }
-                CategoryClass2 te = new CategoryClass2(name, form);
-                Cate2.Add(te);
-                form = ""; 
-                name = "";
+                name = category.Name;
+                ClassForList Cate = new ClassForList(name, formats);
+                List.Add(Cate);
+                name = null;
+                formats = null;
             }
-            ListTest.ItemsSource = Cate2;
+            CateList.ItemsSource = List;
         }
 
         private void Create_Button_Click(object sender, RoutedEventArgs e)
@@ -40,23 +41,23 @@ namespace USort
             creating = true;
             CategoryEditor ce_win = new CategoryEditor();
             ce_win.Closing += (s, e) => 
-            { 
-                string name = "";
-                string form = "";
-                List<CategoryClass2> Cate2 = new List<CategoryClass2> { };
+            {
+                string name = null;
+                string formats = null;
+                List<ClassForList> List = new List<ClassForList> { };
                 foreach (CategoryClass category in CategoryList)
                 {
-                    foreach (string formats in category.Formats)
+                    foreach (string format in category.Formats)
                     {
-                        name = category.Name;
-                        form += $"{formats}; ";
+                        formats += $"{format}; ";
                     }
-                    CategoryClass2 te = new CategoryClass2(name, form);
-                    Cate2.Add(te);
-                    form = ""; 
-                    name = "";
+                    name = category.Name;
+                    ClassForList Cate = new ClassForList(name, formats);
+                    List.Add(Cate);
+                    name = null;
+                    formats = null;
                 }
-                ListTest.ItemsSource = Cate2;
+                CateList.ItemsSource = List;
             };
             ce_win.ShowDialog();
         }
@@ -70,7 +71,7 @@ namespace USort
         {
             try
             {
-                CategoryClass2 SelectedCate = (CategoryClass2)ListTest.SelectedItem;
+                ClassForList SelectedCate = (ClassForList)CateList.SelectedItem;
                 foreach (CategoryClass Cate in CategoryList)
                 {
                     if (Cate.Name == SelectedCate.Name)
@@ -79,31 +80,22 @@ namespace USort
                     }
                 }
                 CategoryList.RemoveAt(indexIn);
-                string name = "";
-                string form = "";
-                List<CategoryClass2> Cate2 = new List<CategoryClass2> { };
+                string name = null;
+                string formats = null;
+                List<ClassForList> List = new List<ClassForList> { };
                 foreach (CategoryClass category in CategoryList)
                 {
-                    foreach (string formats in category.Formats)
+                    foreach (string format in category.Formats)
                     {
-                        name = category.Name;
-                        form += $" {formats};";
+                        formats += $" {format};";
                     }
-                    CategoryClass2 te = new CategoryClass2(name, form);
-                    Cate2.Add(te);
-                    form = "";
-                    name = "";
+                    name = category.Name;
+                    ClassForList Cate = new ClassForList(name, formats);
+                    List.Add(Cate);
+                    name = null;
+                    formats = null;
                 }
-                ListTest.ItemsSource = Cate2;
-                JsonSerializer serializer = new JsonSerializer();
-                JSP.Categories = CategoryList;
-                JSP.FileExceptions = FileException;
-                using (StreamWriter sw = new StreamWriter($@"{Application.StartupPath}\Settings.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, JSP);
-                }
+                CateList.ItemsSource = List;
             }
             catch
             {
@@ -121,7 +113,7 @@ namespace USort
             try
             {
                 creating = false;
-                CategoryClass2 SelectedCate = (CategoryClass2)ListTest.SelectedItem;
+                ClassForList SelectedCate = (ClassForList)CateList.SelectedItem;
                 foreach (CategoryClass Cate in CategoryList)
                 {
                     if (Cate.Name == SelectedCate.Name)
@@ -132,22 +124,22 @@ namespace USort
                 CategoryEditor ce_win = new CategoryEditor();
                 ce_win.Closing += (s, e) =>
                 {
-                    string name = "";
-                    string form = "";
-                    List<CategoryClass2> Cate2 = new List<CategoryClass2> { };
+                    string name = null;
+                    string formats = null;
+                    List<ClassForList> List = new List<ClassForList> { };
                     foreach (CategoryClass category in CategoryList)
                     {
-                        foreach (string formats in category.Formats)
+                        foreach (string format in category.Formats)
                         {
                             name = category.Name;
-                            form += $" {formats};";
+                            formats += $" {format};";
                         }
-                        CategoryClass2 te = new CategoryClass2(name, form);
-                        Cate2.Add(te);
-                        form = "";
+                        ClassForList Cate = new ClassForList(name, formats);
+                        List.Add(Cate);
+                        formats = "";
                         name = "";
                     }
-                    ListTest.ItemsSource = Cate2;
+                    CateList.ItemsSource = List;
                 };
                 ce_win.ShowDialog();
             }
@@ -167,6 +159,18 @@ namespace USort
             {
                 Delete();
             }
+        }
+    }
+
+    public class ClassForList //Класс для создания списка в настройках
+    {
+        public string Name { get; set; }
+        public string Formats { get; set; }
+
+        public ClassForList(string N, string F)
+        {
+            Name = N;
+            Formats = F;
         }
     }
 }

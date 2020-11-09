@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,6 +32,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,12 +79,16 @@
     <ApplicationIcon>icon256.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Costura, Version=4.1.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.4.1.0\lib\net40\Costura.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -104,29 +111,35 @@
     <Compile Include="About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Advance Settings Page.xaml.cs">
+    <Compile Include="Initial_Setup\InitialSetupPage.xaml.cs">
+      <DependentUpon>InitialSetupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Initial_Setup\InitialSetupWin.xaml.cs">
+      <DependentUpon>InitialSetupWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\Advance Settings Page.xaml.cs">
       <DependentUpon>Advance Settings Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CategoryEditor.xaml.cs">
+    <Compile Include="Settings\CategoryEditor.xaml.cs">
       <DependentUpon>CategoryEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EveryDayPage.xaml.cs">
+    <Compile Include="Settings\EveryDayPage.xaml.cs">
       <DependentUpon>EveryDayPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EveryMonthPage.xaml.cs">
+    <Compile Include="Settings\EveryMonthPage.xaml.cs">
       <DependentUpon>EveryMonthPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EveryWeekPage.xaml.cs">
+    <Compile Include="Settings\EveryWeekPage.xaml.cs">
       <DependentUpon>EveryWeekPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages.cs" />
-    <Compile Include="PlannedWin.xaml.cs">
+    <Compile Include="Settings\PlannedWin.xaml.cs">
       <DependentUpon>PlannedWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Settings Page.xaml.cs">
+    <Compile Include="Settings\Settings Page.xaml.cs">
       <DependentUpon>Settings Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="Updater.xaml.cs">
@@ -136,31 +149,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Advance Settings Page.xaml">
+    <Page Include="Initial_Setup\InitialSetupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CategoryEditor.xaml">
+    <Page Include="Initial_Setup\InitialSetupWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EveryDayPage.xaml">
+    <Page Include="Settings\Advance Settings Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EveryMonthPage.xaml">
+    <Page Include="Settings\CategoryEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EveryWeekPage.xaml">
+    <Page Include="Settings\EveryDayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="lang.ru-RU.xaml">
+    <Page Include="Settings\EveryMonthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="lang.xaml">
+    <Page Include="Settings\EveryWeekPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Languages\lang.ru-RU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Languages\lang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,11 +201,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PlannedWin.xaml">
+    <Page Include="Settings\PlannedWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Settings Page.xaml">
+    <Page Include="Settings\Settings Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,4 +258,12 @@
     <Resource Include="icon256.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.0.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.0\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.0.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.0.0\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.4.1.0\build\Costura.Fody.props'))" />
+  </Target>
 </Project>

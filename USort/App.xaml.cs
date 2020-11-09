@@ -17,11 +17,12 @@ namespace USort
     ///
     public partial class App : Application
     { 
-        internal static string version = "Beta 0.63"; //Отображение версии
         internal static int indexIn; //Индекс категории в List
         internal static List<CategoryClass> CategoryList; //List для экземпляров категорий
         internal static List<string> FileException; //Исключения файлов из сортировки
+        internal static string LastPath;
         internal static bool creating;
+        internal static string version = "Beta 0.6.4";
         internal static JSONParser JSP = new JSONParser();
 
 
@@ -56,7 +57,6 @@ namespace USort
                             }
                             catch(Exception ex)
                             {
-                                Clipboard.SetText(ex.ToString());
                                 //Это нужно чтобы обходить файлы, которые заняты другим процессом
                             }
                         }
@@ -65,8 +65,7 @@ namespace USort
                     //------------------------------------------------------------------
                     else
                     {
-                        USort.Properties.Settings.Default.Path = arg;
-                        USort.Properties.Settings.Default.Save();
+                        LastPath = arg;
                     }
                 }
                 catch(Exception ex)
@@ -78,7 +77,7 @@ namespace USort
         //------------------------------------------------------------------
 
 
-                                        //Localization
+        //Localization
         private static List<CultureInfo> m_Languages = new List<CultureInfo>();
 
         public static List<CultureInfo> Languages
@@ -91,14 +90,14 @@ namespace USort
 
         public App()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             App.LanguageChanged += App_LanguageChanged;
 
             m_Languages.Clear();
             m_Languages.Add(new CultureInfo("en-US"));
             m_Languages.Add(new CultureInfo("ru-RU"));
 
-            Language = USort.Properties.Settings.Default.DefaultLanguage;
+            Language = CultureInfo.GetCultureInfo("en-US"); //Стандартный язык
         }
 
         public static event EventHandler LanguageChanged;
@@ -120,15 +119,15 @@ namespace USort
                 switch (value.Name)
                 {
                     case "ru-RU":
-                        dict.Source = new Uri(String.Format("lang.{0}.xaml", value.Name), UriKind.Relative);
+                        dict.Source = new Uri(String.Format("Languages/lang.{0}.xaml", value.Name), UriKind.Relative);
                         break;
                     default:
-                        dict.Source = new Uri("lang.xaml", UriKind.Relative);
+                        dict.Source = new Uri("Languages/lang.xaml", UriKind.Relative);
                         break;
                 }
 
                 ResourceDictionary oldDict = (from d in Application.Current.Resources.MergedDictionaries
-                                              where d.Source != null && d.Source.OriginalString.StartsWith("lang.")
+                                              where d.Source != null && d.Source.OriginalString.StartsWith("Languages/lang.")
                                               select d).First();
                 if (oldDict != null)
                 {
@@ -145,10 +144,9 @@ namespace USort
             }
         }
 
-        private void App_LanguageChanged(Object sender, EventArgs e)
+        public void App_LanguageChanged(Object sender, EventArgs e)
         {
-            USort.Properties.Settings.Default.DefaultLanguage = Language;
-            USort.Properties.Settings.Default.Save();
+            
         }
         //----------------------------------------------------------------------------------------
     }
@@ -172,22 +170,14 @@ namespace USort
         }
     }
 
-    public class CategoryClass2 //Мусорный класс :(
-    {
-        public string Name { get; set; }
-        public string Formats { get; set; }
-
-        public CategoryClass2(string N, string F)
-        {
-            Name = N;
-            Formats = F;
-        }
-    }
+    
 
     public class JSONParser //Класс для создания и чтения JSON
     {
         public List<CategoryClass> Categories;
         public List<string> FileExceptions;
+        public CultureInfo Lang = CultureInfo.GetCultureInfo("en-US");
+        public string LastPath = "";
     }
 
     public class Updates //Класс для парсинга обновлений

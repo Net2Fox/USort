@@ -21,7 +21,7 @@
     <v:String x:Key="l_Thanks1">NegaTiv - идея и помощь в тестировании.</v:String>
     <v:String x:Key="l_Thanks2">ZerZru - помощь в тестировании.</v:String>
     <v:String x:Key="l_Version">Версия:</v:String>
-    <v:String x:Key="l_AdvButton">Расширенные настройки</v:String>
+    <v:String x:Key="l_AdvButton">Категории</v:String>
     <v:String x:Key="l_AdvButton2">Назад</v:String>
     <v:String x:Key="l_TextCateName">Название категории</v:String>
     <v:String x:Key="l_AddTitle">Добавление категории</v:String>

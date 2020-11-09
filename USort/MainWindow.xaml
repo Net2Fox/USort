@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:USort"
         mc:Ignorable="d"
-        Title="USort" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+        Title="USort" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight" Closing="Window_Closing">
     <Grid x:Name ="Grid1">
         <Frame x:Name="Main" Content="" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="794" NavigationUIVisibility="Hidden"/>
     </Grid>

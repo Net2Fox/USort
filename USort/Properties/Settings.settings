@@ -1,18 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="USort.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="DefaultLanguage" Type="System.Globalization.CultureInfo" Scope="User">
-      <Value Profile="(Default)">en-US</Value>
-    </Setting>
-    <Setting Name="Path" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="AutoUpd" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="Version" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.62</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

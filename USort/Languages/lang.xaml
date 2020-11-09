@@ -21,7 +21,7 @@
     <v:String x:Key="l_Thanks1">NegaTiv - idea and help in testing.</v:String>
     <v:String x:Key="l_Thanks2">ZerZru - help in testing.</v:String>
     <v:String x:Key="l_Version">Version:</v:String>
-    <v:String x:Key="l_AdvButton">Advance Settings</v:String>
+    <v:String x:Key="l_AdvButton">Category</v:String>
     <v:String x:Key="l_AdvButton2">Back</v:String>
     <v:String x:Key="l_TextCateName">Name of category</v:String>
     <v:String x:Key="l_AddTitle">Adding a category</v:String>
