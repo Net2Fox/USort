@@ -9,6 +9,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 - Portability. The program does not require installation, you just unzip the folder and that's it.
 - Openness. All source code of the program is available on GitHub.
 - The "Quick start" function, i.e. you can drag the folder where you want to sort files directly to the executable file of the program and it will immediately start with the path to this folder.
+- The "Silent sorting" function. You can create a program shortcut, and in the "object" field and write the following "sort folder path" (without quotes), for example, "D:\USort\USort.exe" sort D:\sortfolder
 
 
 <details>
@@ -29,12 +30,12 @@ USort умеет сортировать заранее предустановл�
 - Портативность. Программа не требует установки, вы просто разархивируете папку и всё.
 - Открытость. Весь исходный код программы доступен на GitHub.
 - Функция "Быстрый запуск", т.е. вы можете перетащить папку, файлы в которой вы хотите отсортировать прямо на исполняемый файл программы и она сразу запустится с путем до этой папки (см. GIF).
+- Функция "Тихая сортировка". Вы можете создать ярлык программы, и в поле "объект" и написать следующее "sort путь до папки" (без кавычек), например, "D:\USort\USort.exe" sort D:\sortfolder
 
 
 ## Credits
 Special thanks to:
 - [Json.NET](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET
-- [GongSolutions.WPF.DragDrop](https://github.com/punker76/gong-wpf-dragdrop)(Not relevant for versions 0.4 and later) - An easy to use drag'n'drop framework for WPF
 - [NegaTiv](https://vk.com/lilnegativ) - idea and help in testing.
 - [ZerZru](https://github.com/ZerZru) - help in testing.
 - [Epsil0neR](https://github.com/Epsil0neR/WPF-Localization) - For WPF localization guide without restarting
