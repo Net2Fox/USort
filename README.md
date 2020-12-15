@@ -36,6 +36,7 @@ USort умеет сортировать заранее предустановл�
 ## Credits
 Special thanks to:
 - [Json.NET](https://www.newtonsoft.com/json) - Popular high-performance JSON framework for .NET
-- [NegaTiv](https://vk.com/lilnegativ) - idea and help in testing.
-- [ZerZru](https://github.com/ZerZru) - help in testing.
+- [Costura.Fody](https://github.com/Fody/Costura) - Embeds dependencies as resources
+- [NegaTiv](https://vk.com/lilnegativ) - idea and help in testing
+- [ZerZru](https://github.com/ZerZru) - help in testing
 - [Epsil0neR](https://github.com/Epsil0neR/WPF-Localization) - For WPF localization guide without restarting
