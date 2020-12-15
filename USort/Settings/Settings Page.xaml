@@ -18,17 +18,16 @@
         <CheckBox x:Name="AU_CheckBox" Content="{DynamicResource l_AutoUpd}" HorizontalAlignment="Left" Margin="222,18,0,0" VerticalAlignment="Top" Height="20" Width="310" FontSize="16" Checked="AU_CheckBox_Checked" Unchecked="AU_CheckBox_Unchecked" IsEnabled="False"/>
         <Button Content="{DynamicResource l_Upd}" HorizontalAlignment="Left" Margin="568,10,0,0" VerticalAlignment="Top" Width="188" Height="28" FontSize="16" Click="Upd_Button_Click" IsEnabled="False"/>
         <CheckBox x:Name="DarkTheme" Content="{DynamicResource l_TextDark}" HorizontalAlignment="Left" Margin="222,43,0,0" VerticalAlignment="Top" Height="20" Width="118" FontSize="16" IsChecked="False" IsEnabled="False"/>
-        <ListView x:Name="FileExcep_ListView" HorizontalAlignment="Left" Height="234" VerticalAlignment="Top" Width="156" Margin="34,109,0,0">
+        <ListView x:Name="FileExcep_ListView" HorizontalAlignment="Left" Height="255" VerticalAlignment="Top" Width="167" Margin="34,109,0,0" IsSynchronizedWithCurrentItem="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Center" SelectionMode="Single" KeyDown="Keyboard">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="{DynamicResource l_HeadFileExce}" Width="150"/>
+                    <GridViewColumn Header="{DynamicResource l_HeadFileExce}" Width="160"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="Plus_Button" Content="+" HorizontalAlignment="Left" Margin="34,381,0,0" VerticalAlignment="Top" Width="30" FontSize="16" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Plus_Button_Click"/>
-        <Button x:Name="Minus_Button" Content="-" HorizontalAlignment="Left" Margin="159,381,0,0" VerticalAlignment="Top" Width="30" FontSize="16" Height="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Minus_Button_Click"/>
-        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="35,87,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextFileExce}" VerticalAlignment="Top" FontSize="15" Width="155" TextAlignment="Center" Height="22"/>
-        <TextBox x:Name="FileExc_TextBox" HorizontalAlignment="Left" Height="30" Margin="34,347,0,0" TextWrapping="Wrap" Text="file.exe" VerticalAlignment="Top" Width="155" FontSize="16"/>
+        <Button x:Name="Minus_Button" Content="-" HorizontalAlignment="Left" Margin="159,369,0,0" VerticalAlignment="Top" Width="42" FontSize="16" Height="42" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="Minus_Button_Click"/>
+        <TextBlock x:Name="Text1" HorizontalAlignment="Left" Margin="34,87,0,0" TextWrapping="Wrap" Text="{DynamicResource l_TextFileExce}" VerticalAlignment="Top" FontSize="15" Width="167" TextAlignment="Center" Height="22"/>
         <Button x:Name="Planned_Button" Content="{DynamicResource l_PlannedButt}" HorizontalAlignment="Left" Margin="544,66,0,0" VerticalAlignment="Top" Width="231" Height="28" FontSize="16" Click="Planned_Button_Click" IsEnabled="False"/>
+        <Button x:Name="Select_Button" Content="{DynamicResource B_ChooseFile}" HorizontalAlignment="Left" Margin="34,369,0,0" VerticalAlignment="Top" Width="120" Height="42" Click="Select_Button_Click" FontSize="16"/>
     </Grid>
 </Page>

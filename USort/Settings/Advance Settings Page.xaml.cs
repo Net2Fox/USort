@@ -69,7 +69,8 @@ namespace USort
 
         private void Delete()
         {
-            try
+            
+            if (CateList.SelectedItem != null)
             {
                 ClassForList SelectedCate = (ClassForList)CateList.SelectedItem;
                 foreach (CategoryClass Cate in CategoryList)
@@ -97,10 +98,6 @@ namespace USort
                 }
                 CateList.ItemsSource = List;
             }
-            catch
-            {
-
-            }
         }
 
         private void Edit_Button_Click(object sender, RoutedEventArgs e)
@@ -110,7 +107,7 @@ namespace USort
 
         private void Edit()
         {
-            try
+            if(CateList.SelectedItem != null)
             {
                 creating = false;
                 ClassForList SelectedCate = (ClassForList)CateList.SelectedItem;
@@ -142,10 +139,6 @@ namespace USort
                     CateList.ItemsSource = List;
                 };
                 ce_win.ShowDialog();
-            }
-            catch
-            {
-
             }
         }
 

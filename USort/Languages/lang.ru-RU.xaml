@@ -10,6 +10,7 @@
     <v:String x:Key="l_About">О программе</v:String>
     <v:String x:Key="l_Settings">Настройки</v:String>
     <v:String x:Key="l_Error">Произошла критическая ошибка! Лог был скопирован в буфер обмена.</v:String>
+    <v:String x:Key="JsonError">Видимо, ваш файл настроек устарел. К сожалению, вам придётся удалить его и настроить всё заново.</v:String>
     <v:String x:Key="l_Succ">Успешно!</v:String>
     <v:String x:Key="l_PathError">Кажется, вы не выбрали папку.</v:String>
     <v:String x:Key="l_Edit">Редактировать</v:String>
@@ -42,4 +43,6 @@
     <v:String x:Key="l_PlannedButt">Запланированная сортировка</v:String>
     <v:String x:Key="l_Yes">Да</v:String>
     <v:String x:Key="l_No">Нет</v:String>
+
+    <v:String x:Key="B_ChooseFile">Выбрать файл</v:String>
 </ResourceDictionary>

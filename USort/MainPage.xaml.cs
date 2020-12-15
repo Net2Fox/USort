@@ -95,77 +95,55 @@ namespace USort
             catch(Exception ex)
             {
                 Clipboard.SetText(ex.ToString());
-                if(App.Language.Name == "ru-RU")
-                {
-                    GreetingLab.Text = "Видимо, ваш файл настроек устарел. К сожалению, вам придётся удалить его и настроить всё заново.";
-                }
-                else if (App.Language.Name == "en-US")
-                {
-                    GreetingLab.Text = "Apparently your settings file is out of date. Unfortunately, you have to remove it and configure everything again.";
-                }
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "JsonError");
             }
         }
 
         private void PathButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Greetings");
+            using (FolderBrowserDialog openFolder = new FolderBrowserDialog())
             {
-                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Greetings");
-                FolderBrowserDialog openFolder = new FolderBrowserDialog();
-                var result = openFolder.ShowDialog();
-                if (result == DialogResult.OK)
+                if (openFolder.ShowDialog() == DialogResult.OK)
                 {
                     LastPath = path = DirectoryPath.Text = openFolder.SelectedPath;
                 }
-                else if(result == DialogResult.Cancel && DirectoryPath.Text != LastPath)
+                else if (openFolder.ShowDialog() == DialogResult.Cancel && DirectoryPath.Text != LastPath)
                 {
                     GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
                 }
-            }
-            catch (Exception ex)
-            {
-                Clipboard.SetText(ex.ToString());
-                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Error");
             }
         }
 
         private void Sort_Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (path != null)
             {
-                if (path != null)
+                DirectoryInfo files = new DirectoryInfo(path);
+                foreach (FileInfo file in files.GetFiles())
                 {
-                    DirectoryInfo files = new DirectoryInfo(path);
-                    foreach (FileInfo file in files.GetFiles())
+                    try
                     {
-                        try
+                        foreach (CategoryClass Category in CategoryList)
                         {
-                            foreach (CategoryClass Category in CategoryList)
+                            if(Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
                             {
-                                if(Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
-                                {
-                                    Directory.CreateDirectory($@"{path}\{Category.Name}\");
-                                    fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                    File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
-                                }
+                                Directory.CreateDirectory($@"{path}\{Category.Name}\");
+                                fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                File.Move(fullDirectoryFile, $@"{path}\{Category.Name}\{file.Name}");
                             }
                         }
-                        catch
-                        {
-                            //Это нужно чтобы обходить файлы, которые заняты другим процессом
-                        }
                     }
-                    GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Succ");
+                    catch
+                    {
+                        //Это нужно чтобы обходить файлы, которые заняты другим процессом
+                    }
                 }
-                else
-                {
-                    GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
-                }
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Succ");
             }
-            catch (Exception ex)
+            else
             {
-                Clipboard.SetText(ex.ToString());
-                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_Error");
+                GreetingLab.SetResourceReference(TextBlock.TextProperty, "l_PathError");
             }
         }
 

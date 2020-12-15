@@ -1,60 +1,51 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Controls;
-using Newtonsoft.Json;
+using Controls = System.Windows.Controls;
+using Input = System.Windows.Input;
 using static USort.Pages;
 using static USort.App;
+using System.Windows.Forms;
 
 namespace USort
 {
     /// <summary>
     /// Логика взаимодействия для Settings_Page.xaml
     /// </summary>
-    public partial class Settings_Page : Page
+    public partial class Settings_Page : Controls.Page
     {
         public Settings_Page()
         {
             InitializeComponent();
             //AU_CheckBox.IsChecked = Properties.Settings.Default.AutoUpd;
             FileExcep_ListView.ItemsSource = FileException;
-            try
+            App.LanguageChanged += LanguageChanged;
+            CultureInfo currLang = App.Language;
+            menuLanguage.Items.Clear();
+            foreach (var lang in App.Languages)
             {
-                App.LanguageChanged += LanguageChanged;
-                CultureInfo currLang = App.Language;
-                menuLanguage.Items.Clear();
-                foreach (var lang in App.Languages)
+                Controls.MenuItem menuLang = new Controls.MenuItem();
+                if(Convert.ToString(lang) == "ru-RU")
                 {
-                    MenuItem menuLang = new MenuItem();
-                    if(Convert.ToString(lang) == "ru-RU")
-                    {
-                        menuLang.Header = "Русский";
-                    }
-                    else if(Convert.ToString(lang) == "en-US")
-                    {
-                        menuLang.Header = "English";
-                    }
-                    //menuLang.Header = lang.DisplayName;
-                    menuLang.Tag = lang;
-                    menuLang.IsChecked = lang.Equals(currLang);
-                    menuLang.Click += ChangeLanguageClick;
-                    menuLanguage.Items.Add(menuLang);
+                    menuLang.Header = "Русский";
                 }
-            }
-            catch (Exception ex)
-            {
-                Clipboard.SetText(ex.ToString());
+                else if(Convert.ToString(lang) == "en-US")
+                {
+                    menuLang.Header = "English";
+                }
+                //menuLang.Header = lang.DisplayName;
+                menuLang.Tag = lang;
+                menuLang.IsChecked = lang.Equals(currLang);
+                menuLang.Click += ChangeLanguageClick;
+                menuLanguage.Items.Add(menuLang);
             }
         }
 
         private void LanguageChanged(Object sender, EventArgs e)
         {
             CultureInfo currLang = App.Language;
-            foreach (MenuItem i in menuLanguage.Items)
+            foreach (Controls.MenuItem i in menuLanguage.Items)
             {
                 CultureInfo ci = i.Tag as CultureInfo;
                 i.IsChecked = ci != null && ci.Equals(currLang);
@@ -63,23 +54,21 @@ namespace USort
 
         private void ChangeLanguageClick(Object sender, EventArgs e)
         {
-            MenuItem mi = sender as MenuItem;
+            Controls.MenuItem mi = sender as Controls.MenuItem;
             if (mi != null)
             {
                 CultureInfo lang = mi.Tag as CultureInfo;
                 if (lang != null)
                 {
                     App.Language = lang;
-                    //Properties.Settings.Default.DefaultLanguage = App.Language;
-                    //Properties.Settings.Default.Save();
                 }
             }
         }
 
         private void Upd_Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 //using (WebClient wc = new WebClient())
                 //{
                 //    Updates updClass = new Updates();
@@ -102,11 +91,11 @@ namespace USort
                 //        }
                 //    }
                 //}
-            }
-            catch (Exception ex)
-            {
-                Clipboard.SetText(ex.ToString());
-            }
+            //}
+            //catch (Exception ex)
+            //{
+                //Clipboard.SetText(ex.ToString());
+            //}
         }
 
         private void AU_CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -121,67 +110,54 @@ namespace USort
             //Properties.Settings.Default.Save();
         }
 
-        private void Plus_Button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-                if (FileException.Contains(FileExc_TextBox.Text) == false)
-                {
-                    FileException.Add(FileExc_TextBox.Text);
-                }
-                FileExcep_ListView.ItemsSource = null;
-                FileExcep_ListView.ItemsSource = FileException;
-                JSP.Categories = CategoryList;
-                JSP.FileExceptions = FileException; 
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter($@"{System.Windows.Forms.Application.StartupPath}\Settings.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, JSP);
-                }
-            }
-            catch(Exception ex)
-            {
-                Clipboard.SetText(ex.ToString());
-            }
-        }
-
         private void Minus_Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (FileExcep_ListView.SelectedItem == null && FileException.Count != 0)
             {
-                if (FileExcep_ListView.SelectedItem == null)
-                {
-                    FileException.RemoveAt(FileException.IndexOf(FileException.Last()));
-                }
-                else
-                {
-                    FileException.RemoveAt(FileException.IndexOf(FileExcep_ListView.SelectedItem.ToString()));
-                }
-                FileExcep_ListView.ItemsSource = null;
-                FileExcep_ListView.ItemsSource = FileException;
-                JSP.Categories = CategoryList;
-                JSP.FileExceptions = FileException; 
-                JsonSerializer serializer = new JsonSerializer();
-                using (StreamWriter sw = new StreamWriter($@"{System.Windows.Forms.Application.StartupPath}\Settings.json"))
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Formatting = Formatting.Indented;
-                    serializer.Serialize(writer, JSP);
-                }
+                FileException.RemoveAt(FileException.IndexOf(FileException.Last()));
             }
-            catch
+            else if(FileException.Count > 0)
             {
-               
+                FileException.RemoveAt(FileException.IndexOf(FileExcep_ListView.SelectedItem.ToString()));
             }
+            FileExcep_ListView.ItemsSource = null;
+            FileExcep_ListView.ItemsSource = FileException;
         }
 
         private void Planned_Button_Click(object sender, RoutedEventArgs e)
         {
             PlannedWin pw = new PlannedWin();
             pw.ShowDialog();
+        }
+
+        private void Select_Button_Click(object sender, RoutedEventArgs e)
+        {
+            using(OpenFileDialog selectFile = new OpenFileDialog())
+            {
+                selectFile.Multiselect = true;
+                if (selectFile.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (string file in selectFile.SafeFileNames)
+                    {
+                        if (FileException.Contains(file) == false)
+                        {
+                            FileException.Add(file);
+                        }
+                    }
+                    FileExcep_ListView.ItemsSource = null;
+                    FileExcep_ListView.ItemsSource = FileException;
+                }
+            }
+        }
+
+        private void Keyboard(object sender, Input.KeyEventArgs e)
+        {
+            if (e.Key == Input.Key.Delete && FileExcep_ListView.SelectedItem != null)
+            {
+                FileException.RemoveAt(FileException.IndexOf(FileExcep_ListView.SelectedItem.ToString()));
+                FileExcep_ListView.ItemsSource = null;
+                FileExcep_ListView.ItemsSource = FileException;
+            }
         }
     }
 }

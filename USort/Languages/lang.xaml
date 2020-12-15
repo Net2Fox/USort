@@ -10,6 +10,7 @@
     <v:String x:Key="l_About">About</v:String>
     <v:String x:Key="l_Settings">Settings</v:String>
     <v:String x:Key="l_Error">There seems to be a critical error. The log was copied to the clipboard.</v:String>
+    <v:String x:Key="JsonError">Apparently your settings file is out of date. Unfortunately, you have to remove it and configure everything again.</v:String>
     <v:String x:Key="l_Succ">Successfully!</v:String>
     <v:String x:Key="l_PathError">It looks like you did not specify a folder.</v:String>
     <v:String x:Key="l_Edit">Edit</v:String>
@@ -41,4 +42,6 @@
     <v:String x:Key="l_PlannedButt">Planned sorting</v:String>
     <v:String x:Key="l_Yes">Yes</v:String>
     <v:String x:Key="l_No">No</v:String>
+
+    <v:String x:Key="B_ChooseFile">Choose file</v:String>
 </ResourceDictionary>

@@ -22,7 +22,7 @@ namespace USort
         internal static List<string> FileException; //Исключения файлов из сортировки
         internal static string LastPath;
         internal static bool creating;
-        internal static string version = "Beta 0.6.4";
+        internal static string version = "Stable 1.0";
         internal static JSONParser JSP = new JSONParser();
 
 
@@ -31,46 +31,39 @@ namespace USort
         {
             foreach (string arg in e.Args)
             {
-                try
+                //Тихий режим. Нужен для того, чтобы совершать сортировку без запуска окна программы. 
+                if (arg == "sort")
                 {
-                    //Тихий режим. Нужен для того, чтобы совершать сортировку без запуска окна программы. 
-                    if (arg == "sort")
+                    string json = File.ReadAllText($@"{Apl.StartupPath}\Settings.json");
+                    JSP = JsonConvert.DeserializeObject<JSONParser>(json);
+                    CategoryList = JSP.Categories;
+                    FileException = JSP.FileExceptions;
+                    DirectoryInfo files = new DirectoryInfo(e.Args[1]);
+                    foreach (FileInfo file in files.GetFiles())
                     {
-                        string json = File.ReadAllText($@"{Apl.StartupPath}\Settings.json");
-                        JSP = JsonConvert.DeserializeObject<JSONParser>(json);
-                        CategoryList = JSP.Categories;
-                        FileException = JSP.FileExceptions;
-                        DirectoryInfo files = new DirectoryInfo(e.Args[1]);
-                        foreach (FileInfo file in files.GetFiles())
+                        try
                         {
-                            try
+                            foreach (CategoryClass Category in CategoryList)
                             {
-                                foreach (CategoryClass Category in CategoryList)
+                                if (Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
                                 {
-                                    if (Category.Formats.Contains(file.Extension) && FileException.Contains(file.Name) == false)
-                                    {
-                                        Directory.CreateDirectory($@"{e.Args[1]}\{Category.Name}\");
-                                        string fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
-                                        File.Move(fullDirectoryFile, $@"{e.Args[1]}\{Category.Name}\{file.Name}");
-                                    }
+                                    Directory.CreateDirectory($@"{e.Args[1]}\{Category.Name}\");
+                                    string fullDirectoryFile = $@"{file.DirectoryName}\{file.Name}";
+                                    File.Move(fullDirectoryFile, $@"{e.Args[1]}\{Category.Name}\{file.Name}");
                                 }
                             }
-                            catch(Exception ex)
-                            {
-                                //Это нужно чтобы обходить файлы, которые заняты другим процессом
-                            }
                         }
-                        this.Shutdown();
+                        catch(Exception ex)
+                        {
+                            //Это нужно чтобы обходить файлы, которые заняты другим процессом
+                        }
                     }
-                    //------------------------------------------------------------------
-                    else
-                    {
-                        LastPath = arg;
-                    }
+                    this.Shutdown();
                 }
-                catch(Exception ex)
+                //------------------------------------------------------------------
+                else
                 {
-                    Clipboard.SetText(ex.ToString());
+                    LastPath = arg;
                 }
             }
         }
@@ -161,17 +154,9 @@ namespace USort
             Name = N;
             Formats = F;
         }
-
-        [JsonConstructor] //Конструктор для JSON
-        public CategoryClass(string N, ObservableCollection<string> F, string DP)
-        {
-            Name = N;
-            Formats = F;
-        }
     }
 
-    
-
+  
     public class JSONParser //Класс для создания и чтения JSON
     {
         public List<CategoryClass> Categories;

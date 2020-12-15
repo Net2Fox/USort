@@ -20,11 +20,11 @@
         <Button x:Name="Delete_Button" Content="{DynamicResource l_Delete}" HorizontalAlignment="Left" Margin="370,362,0,0" VerticalAlignment="Top" Width="148" Click="Delete_Button_Click" Height="39" FontSize="16"/>
         <Button x:Name="Edit_Button" Content="{DynamicResource l_Edit}" HorizontalAlignment="Left" Margin="204,362,0,0" VerticalAlignment="Top" Width="148" Click="Edit_Button_Click" Height="39" FontSize="16"/>
         <Button x:Name="Back_Button" Content="{DynamicResource l_AdvButton2}" HorizontalAlignment="Left" Margin="636,362,0,0" VerticalAlignment="Top" Width="148" Height="39" FontSize="16"/>
-        <ListView x:Name="CateList" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="794" KeyDown="Keyboard">
+        <ListView x:Name="CateList" HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="794" KeyDown="Keyboard" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="{DynamicResource l_HeadName}" Width="150"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=Formats}" Header="{DynamicResource l_HeadRule}" Width="635"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Formats}" Header="{DynamicResource l_HeadRule}" Width="637"/>
                 </GridView>
             </ListView.View>
         </ListView>
