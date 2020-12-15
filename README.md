@@ -2,7 +2,7 @@
 USort - sorter of your files!
 ## What can this sorter do?
 USort can sort pre-installed file extensions by specific folders, and you can also create your own categories or edit previously created ones!
-### [The road to release!](https://github.com/Net2Fox/USort/projects/1)
+### [Download](https://github.com/Net2Fox/USort/releases/download/1.0.0/USort.1.0.rar)
 ## Features
 - Ease. The total weight of the program is less than 1 MB.
 - Speed. Files are sorted as quickly as possible.
@@ -23,7 +23,7 @@ USort can sort pre-installed file extensions by specific folders, and you can al
 USort - сортировщик ваших файлов!
 ### Что умеет данный сортировщик?
 USort умеет сортировать заранее предустановленные расширения файлов по определённым папкам, а также вы можете создавать свои категории или редактировать ранее созданные!
-### [Дорога к релизу!](https://github.com/Net2Fox/USort/projects/1)
+### [Скачать](https://github.com/Net2Fox/USort/releases/download/1.0.0/USort.1.0.rar)
 ## Особенности
 - Лёгкость. Общий вес программы менее 1 мб.
 - Быстрота. Сортировка файлов происходит достаточно быстро.
